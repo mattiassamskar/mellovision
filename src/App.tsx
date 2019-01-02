@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Voting, { Vote } from "./Voting";
 import { initFirebaseVotes } from "./FirebaseService";
+import VoteList from "./VoteList";
 
 interface State {
   votes: Vote[];
@@ -33,8 +34,8 @@ class App extends Component<Props, State> {
         (vote: Vote) => vote.key === changedVote.key
       );
 
-      const left: Vote[] = prevState.votes.slice(0, index);
-      const right: Vote[] = prevState.votes.slice(index + 1);
+      const left = prevState.votes.slice(0, index);
+      const right = prevState.votes.slice(index + 1);
       return {
         votes: left.concat(changedVote, right)
       };
@@ -42,39 +43,14 @@ class App extends Component<Props, State> {
   };
 
   render() {
-    const renderVoteList = () => {
-      return (
-        <table className="u-full-width">
-          <thead>
-            <tr>
-              <th>Namn</th>
-              <th>Artist</th>
-              <th>M</th>
-              <th>F</th>
-              <th>K</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.votes.map(vote => (
-              <tr>
-                <td>{vote.user}</td>
-                <td>{vote.artist}</td>
-                <td>{vote.music}</td>
-                <td>{vote.performance}</td>
-                <td>{vote.clothes}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      );
-    };
-
     return (
       <div className="App">
         <div className="row input">
           <Voting votes={this.state.votes} />
         </div>
-        <div className="row votes">{renderVoteList()}</div>
+        <div className="row votes">
+          <VoteList votes={this.state.votes} />
+        </div>
       </div>
     );
   }

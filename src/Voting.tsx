@@ -36,32 +36,34 @@ class Voting extends Component<Props, State> {
         "No Drama – High15",
         "Not With Me – Wiktoria"
       ],
-      selectedArtist: undefined,
-      musicVote: undefined,
-      performanceVote: undefined,
-      clothesVote: undefined
+      selectedArtist: "",
+      musicVote: "",
+      performanceVote: "",
+      clothesVote: ""
     };
   }
 
-  handleChangeArtist = (selectedArtist: any) =>
-    this.setState({ selectedArtist });
-  handleChangeMusicVote = (musicVote: any) => this.setState({ musicVote });
-  handleChangePerformanceVote = (performanceVote: any) =>
-    this.setState({ performanceVote });
-  handleChangeClothesVote = (clothesVote: any) =>
-    this.setState({ clothesVote });
   handleVoteButtonClick = () => {
+    if (
+      !this.state.selectedArtist ||
+      !this.state.musicVote ||
+      !this.state.performanceVote ||
+      !this.state.clothesVote
+    ) {
+      return;
+    }
+
     this.vote();
     this.setState({
-      selectedArtist: undefined,
-      musicVote: undefined,
-      performanceVote: undefined,
-      clothesVote: undefined
+      selectedArtist: "",
+      musicVote: "",
+      performanceVote: "",
+      clothesVote: ""
     });
   };
 
   vote = () => {
-    const vote: Vote | undefined = this.props.votes.find(
+    const vote = this.props.votes.find(
       vote => vote.user === "Elin" && vote.artist === this.state.selectedArtist
     );
 
@@ -85,36 +87,38 @@ class Voting extends Component<Props, State> {
   };
 
   render() {
-    const renderOptions = () => {
-      return this.state.artists.map(value => (
-        <option value={value}>{value}</option>
-      ));
-    };
-
     return (
       <div>
         <div className="twelve columns">
-          <select className="u-full-width">{renderOptions()}</select>
-        </div>
-        <div className="twelve columns">
           <VotePicker
-            onChange={this.handleChangeMusicVote}
-            vote={this.state.musicVote}
-            placeHolder="Rösta på låten.."
+            onChange={selectedArtist => this.setState({ selectedArtist })}
+            value={this.state.selectedArtist}
+            values={this.state.artists}
+            placeHolder="Välj artist"
           />
         </div>
         <div className="twelve columns">
           <VotePicker
-            onChange={this.handleChangePerformanceVote}
-            vote={this.state.performanceVote}
-            placeHolder="Rösta på framträdandet.."
+            onChange={musicVote => this.setState({ musicVote })}
+            value={this.state.musicVote}
+            values={[1, 2, 3, 4, 5]}
+            placeHolder="Rösta på musiken"
           />
         </div>
         <div className="twelve columns">
           <VotePicker
-            onChange={this.handleChangeClothesVote}
-            vote={this.state.clothesVote}
-            placeHolder="Rösta på kläderna.."
+            onChange={performanceVote => this.setState({ performanceVote })}
+            value={this.state.performanceVote}
+            values={[1, 2, 3, 4, 5]}
+            placeHolder="Rösta på framträdandet"
+          />
+        </div>
+        <div className="twelve columns">
+          <VotePicker
+            onChange={clothesVote => this.setState({ clothesVote })}
+            value={this.state.clothesVote}
+            values={[1, 2, 3, 4, 5]}
+            placeHolder="Rösta på kläderna"
           />
         </div>
         <div className="twelve columns">
