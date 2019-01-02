@@ -1,16 +1,27 @@
 import React, { Component } from "react";
 import Select from "react-select";
 import VotePicker from "./VotePicker";
+import { addVote, updateVote } from "./FirebaseService";
+
+export interface Vote {
+  key?: string;
+  user: string;
+  artist: string;
+  music: number;
+  performance: number;
+  clothes: number;
+}
 
 interface State {
   artists: any[];
-  selectedArtist: string;
-  musicVote: number;
-  performanceVote: number;
-  clothesVote: number;
+  selectedArtist: any;
+  musicVote: any;
+  performanceVote: any;
+  clothesVote: any;
 }
 
 interface Props {
+  votes: Vote[];
 }
 
 class Voting extends Component<Props, State> {
@@ -19,27 +30,39 @@ class Voting extends Component<Props, State> {
     this.state = {
       artists: [
         {
-          value: "Artist 1",
-          label: "Artist 1"
+          value: "Ashes to Ashes – Anna Bergendahl",
+          label: "Ashes to Ashes – Anna Bergendahl"
         },
         {
-          value: "Artist 2",
-          label: "Artist 2"
+          value: "Chasing Rivers – Nano",
+          label: "Chasing Rivers – Nano"
         },
         {
-          value: "Artist 3",
-          label: "Artist 3"
+          value: "Hello – Mohombi",
+          label: "Hello – Mohombi"
         },
         {
-          value: "Artist 4",
-          label: "Artist 4"
+          value: "Mina bränder – Zeana",
+          label: "Mina bränder – Zeana"
+        },
+        {
+          value: "Mina fyra årstider – Arja Saijonmaa",
+          label: "Mina fyra årstider – Arja Saijonmaa"
+        },
+        {
+          value: "No Drama – High15",
+          label: "No Drama – High15"
+        },
+        {
+          value: "Not With Me – Wiktoria",
+          label: "Not With Me – Wiktoria"
         },
       ],
-      selectedArtist: "",
-      musicVote: 0,
-      performanceVote: 0,
-      clothesVote: 0,
-    }
+      selectedArtist: undefined,
+      musicVote: undefined,
+      performanceVote: undefined,
+      clothesVote: undefined
+    };
   }
 
   handleChangeArtist = (selectedArtist: any) => this.setState({ selectedArtist });
@@ -47,7 +70,34 @@ class Voting extends Component<Props, State> {
   handleChangePerformanceVote = (performanceVote: any) => this.setState({ performanceVote });
   handleChangeClothesVote = (clothesVote: any) => this.setState({ clothesVote });
   handleVoteButtonClick = () => {
-    this.setState({ selectedArtist: "", musicVote: 0, performanceVote: 0, clothesVote: 0 });
+    this.vote();
+    this.setState({ selectedArtist: undefined, musicVote: undefined, performanceVote: undefined, clothesVote: undefined });
+  }
+
+  vote = () => {
+    const vote: Vote | undefined = this.props.votes.find(
+      vote =>
+        vote.user === "Elin" &&
+        vote.artist === this.state.selectedArtist.value
+    );
+
+    if (vote) {
+      updateVote({
+        ...vote,
+        artist: this.state.selectedArtist.value,
+        music: this.state.musicVote.value,
+        performance: this.state.performanceVote.value,
+        clothes: this.state.clothesVote.value
+      });
+    } else {
+      addVote({
+        user: "Elin",
+        artist: this.state.selectedArtist.value,
+        music: this.state.musicVote.value,
+        performance: this.state.performanceVote.value,
+        clothes: this.state.clothesVote.value
+      });
+    }
   }
 
   render() {
