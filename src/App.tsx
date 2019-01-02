@@ -44,7 +44,10 @@ class App extends Component<Props, State> {
 
   render() {
     return (
-      <div className="App">
+      <div className="container App">
+        <div className="row">
+          <img src="logo.png" width="100%" />
+        </div>
         <div className="row input">
           <Voting votes={this.state.votes} />
         </div>
