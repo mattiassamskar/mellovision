@@ -7,8 +7,7 @@ interface State {
   votes: Vote[];
 }
 
-interface Props {
-}
+interface Props {}
 
 class App extends Component<Props, State> {
   constructor(props: Props) {
@@ -26,7 +25,7 @@ class App extends Component<Props, State> {
         votes: [vote, ...prevState.votes]
       };
     });
-  }
+  };
 
   onVoteChanged = (changedVote: Vote) => {
     this.setState((prevState: State) => {
@@ -40,21 +39,42 @@ class App extends Component<Props, State> {
         votes: left.concat(changedVote, right)
       };
     });
-  }
+  };
 
   render() {
     const renderVoteList = () => {
-      return this.state.votes.map(vote => <div key={vote.key} >{vote.user} {vote.artist}</div>);
+      return (
+        <table className="u-full-width">
+          <thead>
+            <tr>
+              <th>Namn</th>
+              <th>Artist</th>
+              <th>M</th>
+              <th>F</th>
+              <th>K</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.votes.map(vote => (
+              <tr>
+                <td>{vote.user}</td>
+                <td>{vote.artist}</td>
+                <td>{vote.music}</td>
+                <td>{vote.performance}</td>
+                <td>{vote.clothes}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      );
     };
 
     return (
-      <div className="App" >
+      <div className="App">
         <div className="row input">
           <Voting votes={this.state.votes} />
         </div>
-        <div className="row votes">
-          {renderVoteList()}
-        </div>
+        <div className="row votes">{renderVoteList()}</div>
       </div>
     );
   }
