@@ -1,29 +1,37 @@
 body{
   background-image: url("background.jpg");
 }
-.input {
+.voting {
   background: #FBAED2;
-  margin: 1vh;
   padding: 1vh;
   border-radius: 5px;
   opacity: 0.95;
+  margin-bottom: 1vh;
+  box-shadow: 2px 2px 4px -1px rgba(0,0,0,0.5)
 }
-.votes {
+.votelist {
   background: #FBAED2;
-  margin: 1vh;
-  font-size: 2.0vh;
   padding: 1vh;
   border-radius: 5px;
   opacity: 0.95;
   height: 70vh;
   overflow-y: scroll;
+  margin-bottom: 1vh;
+  box-shadow: 2px 2px 4px -1px rgba(0,0,0,0.5)
 }
-.toplist {
+.toplists-container {
   background: #FBAED2;
-  display: flex;
-  justify-content: space-between;
-  font-size: 1.5vh;
   padding: 1vh;
   border-radius: 5px;
   opacity: 0.95;
+  margin-bottom: 1vh;
+  box-shadow: 2px 2px 4px -1px rgba(0,0,0,0.5)
+}
+.toplists {
+  display: flex;
+  flex-flow: wrap;
+  margin: -4px;
+}
+.toplists > * {
+  margin: 4px;
 }

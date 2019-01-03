@@ -3,6 +3,7 @@ import "./App.css";
 import Voting, { Vote } from "./Voting";
 import { initFirebaseVotes } from "./FirebaseService";
 import VoteList from "./VoteList";
+import TopList from "./TopList";
 
 interface State {
   votes: Vote[];
@@ -48,12 +49,9 @@ class App extends Component<Props, State> {
         <div className="row">
           <img src="logo.png" width="100%" />
         </div>
-        <div className="row input">
-          <Voting votes={this.state.votes} />
-        </div>
-        <div className="row votes">
-          <VoteList votes={this.state.votes} />
-        </div>
+        <Voting votes={this.state.votes} />
+        <VoteList votes={this.state.votes} />
+        <TopList votes={this.state.votes} />
       </div>
     );
   }

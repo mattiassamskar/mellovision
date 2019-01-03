@@ -64,7 +64,8 @@ class Voting extends Component<Props, State> {
 
   vote = () => {
     const vote = this.props.votes.find(
-      vote => vote.user === "Elin" && vote.artist === this.state.selectedArtist
+      vote =>
+        vote.user === "Mattias" && vote.artist === this.state.selectedArtist
     );
 
     if (vote) {
@@ -77,7 +78,7 @@ class Voting extends Component<Props, State> {
       });
     } else {
       addVote({
-        user: "Elin",
+        user: "Mattias",
         artist: this.state.selectedArtist,
         music: this.state.musicVote,
         performance: this.state.performanceVote,
@@ -88,13 +89,17 @@ class Voting extends Component<Props, State> {
 
   render() {
     return (
-      <div>
+      <div className="row voting">
+        <div>
+          <h4>Din röst</h4>
+        </div>
+
         <div className="twelve columns">
           <VotePicker
             onChange={selectedArtist => this.setState({ selectedArtist })}
             value={this.state.selectedArtist}
             values={this.state.artists}
-            placeHolder="Välj artist"
+            placeHolder="Välj artist.."
           />
         </div>
         <div className="twelve columns">
@@ -102,7 +107,7 @@ class Voting extends Component<Props, State> {
             onChange={musicVote => this.setState({ musicVote })}
             value={this.state.musicVote}
             values={[1, 2, 3, 4, 5]}
-            placeHolder="Rösta på musiken"
+            placeHolder="Betygsätt musiken.."
           />
         </div>
         <div className="twelve columns">
@@ -110,7 +115,7 @@ class Voting extends Component<Props, State> {
             onChange={performanceVote => this.setState({ performanceVote })}
             value={this.state.performanceVote}
             values={[1, 2, 3, 4, 5]}
-            placeHolder="Rösta på framträdandet"
+            placeHolder="Betygsätt framträdandet.."
           />
         </div>
         <div className="twelve columns">
@@ -118,7 +123,7 @@ class Voting extends Component<Props, State> {
             onChange={clothesVote => this.setState({ clothesVote })}
             value={this.state.clothesVote}
             values={[1, 2, 3, 4, 5]}
-            placeHolder="Rösta på kläderna"
+            placeHolder="Betygsätt kläderna.."
           />
         </div>
         <div className="twelve columns">
