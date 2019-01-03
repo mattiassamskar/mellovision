@@ -23,7 +23,7 @@ class TopList extends React.Component<Props, State> {
   };
 
   calculateToplists = (): UserTopList[] => {
-    return this.getUsers().map(user => {
+    const userTopLists = this.getUsers().map(user => {
       const votes = this.props.votes
         .filter(vote => vote.user === user)
         .map(vote => {
@@ -38,20 +38,30 @@ class TopList extends React.Component<Props, State> {
         votes
       };
     });
+
+    userTopLists.sort((a, b) => {
+      if (a.user < b.user) return -1;
+      if (a.user > b.user) return 1;
+      return 0;
+    });
+
+    return userTopLists;
   };
 
   render() {
     return (
       <div className="row toplists-container">
-      <div>
-        <h4>Topplistor</h4>
-      </div>
+        <div>
+          <h4>Topplistor</h4>
+        </div>
         <div className="twelve columns toplists">
           {this.calculateToplists().map(topList => (
             <div key={topList.user}>
               <strong>{topList.user}</strong>
               {topList.votes.map((vote, index) => (
-                <div key={vote.artist}>{index + 1}. {vote.artist}</div>
+                <div key={vote.artist}>
+                  {index + 1}. {vote.artist}
+                </div>
               ))}
             </div>
           ))}
