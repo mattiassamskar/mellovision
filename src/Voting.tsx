@@ -21,6 +21,7 @@ interface State {
 
 interface Props {
   votes: Vote[];
+  user: string;
 }
 
 class Voting extends Component<Props, State> {
@@ -65,7 +66,8 @@ class Voting extends Component<Props, State> {
   vote = () => {
     const vote = this.props.votes.find(
       vote =>
-        vote.user === "Mattias" && vote.artist === this.state.selectedArtist
+        vote.user === this.props.user &&
+        vote.artist === this.state.selectedArtist
     );
 
     if (vote) {
@@ -78,7 +80,7 @@ class Voting extends Component<Props, State> {
       });
     } else {
       addVote({
-        user: "Mattias",
+        user: this.props.user,
         artist: this.state.selectedArtist,
         music: this.state.musicVote,
         performance: this.state.performanceVote,

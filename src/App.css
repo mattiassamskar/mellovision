@@ -1,7 +1,14 @@
 body{
   background-image: url("background.jpg");
 }
-.voting {
+.login {
+  background: #FBAED2;
+  padding: 1vh;
+  border-radius: 5px;
+  opacity: 0.95;
+  margin-bottom: 1vh;
+  box-shadow: 2px 2px 4px -1px rgba(0,0,0,0.5)
+}.voting {
   background: #FBAED2;
   padding: 1vh;
   border-radius: 5px;

@@ -4,9 +4,11 @@ import Voting, { Vote } from "./Voting";
 import { initFirebaseVotes } from "./FirebaseService";
 import VoteList from "./VoteList";
 import TopList from "./TopList";
+import Login from "./Login";
 
 interface State {
   votes: Vote[];
+  user: string;
 }
 
 interface Props {}
@@ -14,12 +16,19 @@ interface Props {}
 class App extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.state = { votes: [] };
+    this.state = { votes: [], user: "" };
   }
 
-  componentDidMount(): void {
+  componentDidMount() {
+    const user = localStorage.getItem("user");
+    if (user !== null) this.setState({ user: user });
     initFirebaseVotes(this.onVoteAdded, this.onVoteChanged);
   }
+
+  onUserSet = (user: string) => {
+    localStorage.setItem("user", user);
+    this.setState({ user: user });
+  };
 
   onVoteAdded = (vote: Vote) => {
     this.setState((prevState: State) => {
@@ -49,7 +58,11 @@ class App extends Component<Props, State> {
         <div className="row">
           <img src="logo.png" width="100%" />
         </div>
-        <Voting votes={this.state.votes} />
+        {this.state.user === "" ? (
+          <Login onUserSet={this.onUserSet} />
+        ) : (
+          <Voting user={this.state.user} votes={this.state.votes} />
+        )}
         <VoteList votes={this.state.votes} />
         <TopList votes={this.state.votes} />
       </div>
