@@ -40,8 +40,8 @@ class TopList extends React.Component<Props, State> {
     });
 
     userTopLists.sort((a, b) => {
-      if (a.user < b.user) return -1;
-      if (a.user > b.user) return 1;
+      if (a.user.toLowerCase() < b.user.toLowerCase()) return -1;
+      if (a.user.toLowerCase() > b.user.toLowerCase()) return 1;
       return 0;
     });
 
