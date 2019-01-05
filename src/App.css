@@ -5,34 +5,33 @@ body {
   background: #89cff0;
   padding: 1vh;
   border-radius: 5px;
-  margin-bottom: 1vh;
+  opacity: 0.99;
+  margin-top: 1vh;
+  margin-bottom: 3vh;
   box-shadow: 2px 2px 4px -1px rgba(0, 0, 0, 0.5);
 }
 .voting {
-  background: #fbaed2;
+  background: #FFC7E4;
   padding: 1vh;
   border-radius: 5px;
-  opacity: 0.95;
-  margin-bottom: 1vh;
+  opacity: 0.99;
+  margin-top: 1vh;
+  margin-bottom: 3vh;
   box-shadow: 2px 2px 4px -1px rgba(0, 0, 0, 0.5);
 }
 .votelist {
   background: #fbaed2;
   padding: 1vh;
-  border-radius: 5px;
   opacity: 0.95;
   height: 70vh;
   overflow-y: scroll;
   margin-bottom: 1vh;
-  box-shadow: 2px 2px 4px -1px rgba(0, 0, 0, 0.5);
 }
 .toplists-container {
   background: #fbaed2;
   padding: 1vh;
-  border-radius: 5px;
   opacity: 0.95;
   margin-bottom: 1vh;
-  box-shadow: 2px 2px 4px -1px rgba(0, 0, 0, 0.5);
 }
 .toplists {
   display: flex;

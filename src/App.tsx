@@ -55,7 +55,7 @@ class App extends Component<Props, State> {
   render() {
     return (
       <div className="container App">
-        <div className="row">
+        <div className="row" style={{ marginTop: "1vh" }}>
           <img src="logo.png" width="100%" />
         </div>
         {this.state.user === "" ? (
