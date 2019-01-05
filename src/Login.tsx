@@ -19,7 +19,7 @@ class Login extends React.Component<Props, State> {
 
   render() {
     return (
-      <div className="row login">
+      <div className="row login shake">
         <div className="twelve columns">
           <h3>Hej, vad heter du?</h3>
           <input
