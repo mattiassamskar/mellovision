@@ -29,13 +29,13 @@ class Voting extends Component<Props, State> {
     super(props);
     this.state = {
       artists: [
-        "Ashes to Ashes – Anna Bergendahl",
         "Chasing Rivers – Nano",
-        "Hello – Mohombi",
+        "No Drama – High 15",
+        "Not With Me – Wiktoria"
         "Mina bränder – Zeana",
         "Mina fyra årstider – Arja Saijonmaa",
-        "No Drama – High15",
-        "Not With Me – Wiktoria"
+        "Hello – Mohombi",
+        "Ashes to Ashes – Anna Bergendahl",
       ],
       selectedArtist: "",
       musicVote: "",
