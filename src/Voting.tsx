@@ -31,7 +31,7 @@ class Voting extends Component<Props, State> {
       artists: [
         "Chasing Rivers – Nano",
         "No Drama – High 15",
-        "Not With Me – Wiktoria"
+        "Not With Me – Wiktoria",
         "Mina bränder – Zeana",
         "Mina fyra årstider – Arja Saijonmaa",
         "Hello – Mohombi",
