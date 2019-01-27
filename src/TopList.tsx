@@ -56,11 +56,16 @@ class TopList extends React.Component<Props, State> {
         </div>
         <div className="twelve columns toplists">
           {this.calculateToplists().map(topList => (
-            <div key={topList.user}>
+            <div key={topList.user} className="toplistItem">
               <strong>{topList.user}</strong>
               {topList.votes.map((vote, index) => (
-                <div key={vote.artist}>
-                  {index + 1}. {vote.artist}
+                <div key={vote.artist} className="toplistVote">
+                  <div>
+                    {index + 1}. {vote.artist}
+                  </div>
+                  <div>
+                    {vote.points}
+                  </div>
                 </div>
               ))}
             </div>

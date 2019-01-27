@@ -1,5 +1,11 @@
 import React from "react";
 import { Vote } from "./Voting";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMicrophone,
+  faMusic,
+  faTshirt
+} from "@fortawesome/free-solid-svg-icons";
 
 interface State {}
 
@@ -20,9 +26,15 @@ class VoteList extends React.Component<Props, State> {
               <tr>
                 <th>Namn</th>
                 <th>Artist</th>
-                <th>M</th>
-                <th>F</th>
-                <th>K</th>
+                <th className="centerText">
+                  <FontAwesomeIcon icon={faMusic} />
+                </th>
+                <th className="centerText">
+                  <FontAwesomeIcon icon={faMicrophone} />
+                </th>
+                <th className="centerText">
+                  <FontAwesomeIcon icon={faTshirt} />
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -30,9 +42,9 @@ class VoteList extends React.Component<Props, State> {
                 <tr key={vote.key}>
                   <td>{vote.user}</td>
                   <td>{vote.artist}</td>
-                  <td>{vote.music}</td>
-                  <td>{vote.performance}</td>
-                  <td>{vote.clothes}</td>
+                  <td className="centerText" >{vote.music}</td>
+                  <td className="centerText">{vote.performance}</td>
+                  <td className="centerText">{vote.clothes}</td>
                 </tr>
               ))}
             </tbody>
