@@ -6,6 +6,7 @@ import VoteList from "./VoteList";
 import TopList from "./TopList";
 import Login from "./Login";
 import TotalTopList from "./TotalTopList";
+import Chat from "./Chat";
 
 interface State {
   votes: Vote[];
@@ -79,6 +80,7 @@ class App extends Component<Props, State> {
           />
         )}
         <VoteList votes={this.state.votes} />
+        <Chat />
         <TotalTopList votes={this.state.votes} artists={this.artists} />
         <TopList votes={this.state.votes} />
       </div>
