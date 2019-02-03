@@ -33,6 +33,16 @@ body {
   opacity: 0.95;
   margin-bottom: 3vh;
 }
+.totaltoplist-container {
+  background: #fbaed2;
+  padding: 1vh;
+  opacity: 0.95;
+  margin-bottom: 3vh;
+}
+.totaltoplist-item {
+  display: flex;
+  justify-content: space-between;
+}
 .toplists {
   display: flex;
   flex-flow: wrap;

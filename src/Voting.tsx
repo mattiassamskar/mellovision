@@ -12,7 +12,6 @@ export interface Vote {
 }
 
 interface State {
-  artists: any[];
   selectedArtist: any;
   musicVote: any;
   performanceVote: any;
@@ -22,21 +21,13 @@ interface State {
 interface Props {
   votes: Vote[];
   user: string;
+  artists: string[];
 }
 
 class Voting extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      artists: [
-        "Chasing Rivers – Nano",
-        "No Drama – High 15",
-        "Not With Me – Wiktoria",
-        "Mina bränder – Zeana",
-        "Mina fyra årstider – Arja Saijonmaa",
-        "Hello – Mohombi",
-        "Ashes to Ashes – Anna Bergendahl",
-      ],
       selectedArtist: "",
       musicVote: "",
       performanceVote: "",
@@ -100,7 +91,7 @@ class Voting extends Component<Props, State> {
           <VotePicker
             onChange={selectedArtist => this.setState({ selectedArtist })}
             value={this.state.selectedArtist}
-            values={this.state.artists}
+            values={this.props.artists}
             placeHolder="Välj artist.."
           />
         </div>

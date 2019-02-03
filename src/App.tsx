@@ -5,6 +5,7 @@ import { initFirebaseVotes } from "./FirebaseService";
 import VoteList from "./VoteList";
 import TopList from "./TopList";
 import Login from "./Login";
+import TotalTopList from "./TotalTopList";
 
 interface State {
   votes: Vote[];
@@ -18,6 +19,16 @@ class App extends Component<Props, State> {
     super(props);
     this.state = { votes: [], user: "" };
   }
+
+  artists = [
+    "Chasing Rivers – Nano",
+    "No Drama – High 15",
+    "Not With Me – Wiktoria",
+    "Mina bränder – Zeana",
+    "Mina fyra årstider – Arja Saijonmaa",
+    "Hello – Mohombi",
+    "Ashes to Ashes – Anna Bergendahl"
+  ];
 
   componentDidMount() {
     const user = localStorage.getItem("user");
@@ -61,9 +72,14 @@ class App extends Component<Props, State> {
         {this.state.user === "" ? (
           <Login onUserSet={this.onUserSet} />
         ) : (
-          <Voting user={this.state.user} votes={this.state.votes} />
+          <Voting
+            user={this.state.user}
+            votes={this.state.votes}
+            artists={this.artists}
+          />
         )}
         <VoteList votes={this.state.votes} />
+        <TotalTopList votes={this.state.votes} artists={this.artists} />
         <TopList votes={this.state.votes} />
       </div>
     );
