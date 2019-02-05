@@ -6,10 +6,11 @@ import VoteList from "./VoteList";
 import TopList from "./TopList";
 import Login from "./Login";
 import TotalTopList from "./TotalTopList";
-import Chat from "./Chat";
+import Chat, { UserComment } from "./Chat";
 
 interface State {
   votes: Vote[];
+  comments: UserComment[];
   user: string;
 }
 
@@ -18,7 +19,7 @@ interface Props {}
 class App extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.state = { votes: [], user: "" };
+    this.state = { votes: [], comments: [], user: "" };
   }
 
   artists = [
@@ -34,7 +35,11 @@ class App extends Component<Props, State> {
   componentDidMount() {
     const user = localStorage.getItem("user");
     if (user !== null) this.setState({ user: user });
-    initFirebaseVotes(this.onVoteAdded, this.onVoteChanged);
+    initFirebaseVotes(
+      this.onVoteAdded,
+      this.onVoteChanged,
+      this.onCommentAdded
+    );
   }
 
   onUserSet = (user: string) => {
@@ -64,6 +69,14 @@ class App extends Component<Props, State> {
     });
   };
 
+  onCommentAdded = (comment: UserComment) => {
+    this.setState((prevState: State) => {
+      return {
+        comments: [...prevState.comments, comment]
+      };
+    });
+  };
+
   render() {
     return (
       <div className="container App">
@@ -80,7 +93,7 @@ class App extends Component<Props, State> {
           />
         )}
         <VoteList votes={this.state.votes} />
-        <Chat />
+        <Chat user={this.state.user} comments={this.state.comments} />
         <TotalTopList votes={this.state.votes} artists={this.artists} />
         <TopList votes={this.state.votes} />
       </div>

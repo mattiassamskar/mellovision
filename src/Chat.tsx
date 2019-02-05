@@ -1,12 +1,17 @@
 import React from "react";
+import { addComment } from "./FirebaseService";
 
-interface Props {}
-
-interface State {
+interface Props {
+  user: string;
   comments: UserComment[];
 }
 
-interface UserComment {
+interface State {
+  comment: string;
+}
+
+export interface UserComment {
+  key?: string;
   user: string;
   comment: string;
 }
@@ -16,29 +21,13 @@ class Chat extends React.Component<Props, State> {
     super(props);
 
     this.state = {
-      comments: [
-        {
-          user: "User 1",
-          comment: "Comment 1"
-        },
-        {
-          user: "User 2",
-          comment: "Comment 2"
-        },
-        {
-          user: "User 3",
-          comment: "Comment 3"
-        },
-        {
-          user: "User 4",
-          comment: "Comment 4"
-        }
-      ]
+      comment: ""
     };
   }
   renderComment = (userComment: UserComment) => (
-    <div>
-      {userComment.user} - {userComment.comment}
+    <div key={userComment.key} className="comment">
+      <div>{userComment.user}</div>
+      <div>{userComment.comment}</div>
     </div>
   );
 
@@ -48,7 +37,27 @@ class Chat extends React.Component<Props, State> {
         <div>
           <h4>Chat</h4>
         </div>
-        {this.state.comments.map(this.renderComment)}
+        {this.props.comments.map(this.renderComment)}
+        <div className="chat">
+          <input
+            type="text"
+            className="u-full-width"
+            value={this.state.comment}
+            onChange={event => this.setState({ comment: event.target.value })}
+          />
+          <button
+            type="button"
+            className="button-primary button-margin"
+            onClick={() =>
+              addComment({
+                user: this.props.user,
+                comment: this.state.comment
+              })
+            }
+          >
+            Skicka
+          </button>
+        </div>
       </div>
     );
   }
