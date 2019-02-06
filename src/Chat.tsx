@@ -35,12 +35,17 @@ class Chat extends React.Component<Props, State> {
     this.scrollToBottom();
   }
 
-  renderComment = (userComment: UserComment) => (
-    <div key={userComment.key} className="comment">
-      <div>{userComment.user}</div>
-      <div>{userComment.comment}</div>
-    </div>
-  );
+  renderComment = (userComment: UserComment) => {
+    const isMyComment = this.props.user === userComment.user;
+    const className = isMyComment ? "my-comment" : "comment";
+
+    return (
+      <div key={userComment.key} className={className}>
+        {!isMyComment && <div className="chat-user">{userComment.user}</div>}
+        <div className="chat-comment">{userComment.comment}</div>
+      </div>
+    );
+  };
 
   scrollToBottom = () => {
     this.messagesEnd.scrollIntoView({
