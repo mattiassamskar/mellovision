@@ -24,6 +24,17 @@ class Chat extends React.Component<Props, State> {
       comment: ""
     };
   }
+
+  messagesEnd: any;
+
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
   renderComment = (userComment: UserComment) => (
     <div key={userComment.key} className="comment">
       <div>{userComment.user}</div>
@@ -31,13 +42,37 @@ class Chat extends React.Component<Props, State> {
     </div>
   );
 
+  scrollToBottom = () => {
+    this.messagesEnd.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "start"
+    });
+  };
+
+  addComment = () => {
+    addComment({
+      user: this.props.user,
+      comment: this.state.comment
+    });
+    this.setState({ comment: "" });
+  };
+
   render() {
     return (
       <div className="chat-container">
         <div>
           <h4>Chat</h4>
         </div>
-        {this.props.comments.map(this.renderComment)}
+        <div>
+          <div className="comment-list">
+            {this.props.comments.map(this.renderComment)}
+            <div
+              className="messages-end"
+              ref={ref => (this.messagesEnd = ref)}
+            />
+          </div>
+        </div>
         <div className="chat">
           <input
             type="text"
@@ -48,12 +83,7 @@ class Chat extends React.Component<Props, State> {
           <button
             type="button"
             className="button-primary button-margin"
-            onClick={() =>
-              addComment({
-                user: this.props.user,
-                comment: this.state.comment
-              })
-            }
+            onClick={this.addComment}
           >
             Skicka
           </button>

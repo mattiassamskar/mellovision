@@ -31,6 +31,8 @@ body {
   background: #fbaed2;
   padding: 1vh;
   opacity: 0.95;
+  height: 70vh;
+  overflow-y: scroll;
   margin-bottom: 3vh;
 }
 .chat-container {
@@ -39,12 +41,22 @@ body {
   opacity: 0.95;
   margin-bottom: 3vh;
 }
+.comment-list {
+  height: 50vh;
+  overflow-y: scroll;
+}
 .chat {
   display: flex;
   justify-content: space-around;
 }
+.messages-end {
+  float: left;
+  clear: both;
+}
 .comment {
   display: flex;
+  flex-direction: column;
+  margin-bottom: 1vh;
 }
 .totaltoplist-container {
   background: #fbaed2;
@@ -75,8 +87,7 @@ body {
 .centerText {
   text-align: center;
 }
-.button-margin
-{
+.button-margin {
   margin-left: 10px;
 }
 .shake {
