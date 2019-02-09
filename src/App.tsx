@@ -23,13 +23,13 @@ class App extends Component<Props, State> {
   }
 
   artists = [
-    "Chasing Rivers – Nano",
-    "No Drama – High 15",
-    "Not With Me – Wiktoria",
-    "Mina bränder – Zeana",
-    "Mina fyra årstider – Arja Saijonmaa",
-    "Hello – Mohombi",
-    "Ashes to Ashes – Anna Bergendahl"
+    "Andreas Johnson - Army Of Us",
+    "Malou Prytz - I Do Me",
+    "Oscar Enestad - I Love It",
+    "Jan Malmsjö - Leva livet",
+    "Vlad Reiser - Nakna i regnet",
+    "Hanna Ferm & Liamoo - Hold You",
+    "Margaret - Tempo"
   ];
 
   componentDidMount() {
@@ -93,7 +93,7 @@ class App extends Component<Props, State> {
           />
         )}
         <VoteList votes={this.state.votes} />
-        <Chat user={this.state.user} comments={this.state.comments} />
+        {/* <Chat user={this.state.user} comments={this.state.comments} /> */}
         <TotalTopList votes={this.state.votes} artists={this.artists} />
         <TopList votes={this.state.votes} />
       </div>

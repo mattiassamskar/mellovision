@@ -80,6 +80,7 @@ class Chat extends React.Component<Props, State> {
         </div>
         <div className="chat">
           <input
+            style={{ fontSize: "16px" }}
             type="text"
             className="u-full-width"
             value={this.state.comment}
