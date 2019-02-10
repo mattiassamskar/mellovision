@@ -1,9 +1,13 @@
 import React from "react";
 import { addComment } from "./FirebaseService";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   user: string;
   comments: UserComment[];
+  chatIsVisible: boolean;
+  toggleChat: () => void;
 }
 
 interface State {
@@ -47,15 +51,24 @@ class Chat extends React.Component<Props, State> {
     );
   };
 
+  renderChatPopup = () => (
+    <div className="chat-popup" onClick={this.props.toggleChat}>
+      Chat
+    </div>
+  );
+
   scrollToBottom = () => {
-    this.messagesEnd.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest",
-      inline: "start"
-    });
+    this.messagesEnd &&
+      this.messagesEnd.scrollIntoView({
+        behavior: "instant",
+        block: "nearest",
+        inline: "start"
+      });
   };
 
   addComment = () => {
+    if (this.state.comment === "") return;
+
     addComment({
       user: this.props.user,
       comment: this.state.comment
@@ -64,25 +77,23 @@ class Chat extends React.Component<Props, State> {
   };
 
   render() {
+    if (!this.props.chatIsVisible) {
+      return this.renderChatPopup();
+    }
+
     return (
       <div className="chat-container">
-        <div>
-          <h4>Chat</h4>
+        <div className="close-icon" onClick={this.props.toggleChat}>
+          <FontAwesomeIcon icon={faTimesCircle} />
         </div>
-        <div>
-          <div className="comment-list">
-            {this.props.comments.map(this.renderComment)}
-            <div
-              className="messages-end"
-              ref={ref => (this.messagesEnd = ref)}
-            />
-          </div>
+        <div className="comment-list">
+          {this.props.comments.map(this.renderComment)}
+          <div className="messages-end" ref={ref => (this.messagesEnd = ref)} />
         </div>
         <div className="chat">
           <input
-            style={{ fontSize: "16px" }}
             type="text"
-            className="u-full-width"
+            className="u-full-width chat-input"
             value={this.state.comment}
             onChange={event => this.setState({ comment: event.target.value })}
           />

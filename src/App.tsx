@@ -12,6 +12,7 @@ interface State {
   votes: Vote[];
   comments: UserComment[];
   user: string;
+  chatIsVisible: boolean;
 }
 
 interface Props {}
@@ -19,7 +20,7 @@ interface Props {}
 class App extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.state = { votes: [], comments: [], user: "" };
+    this.state = { votes: [], comments: [], user: "", chatIsVisible: true };
   }
 
   artists = [
@@ -78,6 +79,16 @@ class App extends Component<Props, State> {
   };
 
   render() {
+    if (this.state.chatIsVisible) {
+      return (
+        <Chat
+          user={this.state.user}
+          comments={this.state.comments}
+          chatIsVisible={true}
+          toggleChat={() => this.setState({ chatIsVisible: false })}
+        />
+      );
+    }
     return (
       <div className="container App">
         <div className="row" style={{ marginTop: "1vh" }}>
@@ -93,9 +104,14 @@ class App extends Component<Props, State> {
           />
         )}
         <VoteList votes={this.state.votes} />
-        {/* <Chat user={this.state.user} comments={this.state.comments} /> */}
         <TotalTopList votes={this.state.votes} artists={this.artists} />
         <TopList votes={this.state.votes} />
+        <Chat
+          user={this.state.user}
+          comments={this.state.comments}
+          chatIsVisible={false}
+          toggleChat={() => this.setState({ chatIsVisible: true })}
+        />
       </div>
     );
   }
