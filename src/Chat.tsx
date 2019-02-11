@@ -91,12 +91,12 @@ class Chat extends React.Component<Props, State> {
         </div>
         <div className="comment-list">
           {this.props.comments.map(this.renderComment)}
-          <div className="fade"></div>
           <div className="messages-end" ref={ref => (this.messagesEnd = ref)} />
         </div>
         <div className="chat">
           <input
             type="text"
+            
             className="u-full-width chat-input"
             value={this.state.comment}
             onChange={event => this.setState({ comment: event.target.value })}
