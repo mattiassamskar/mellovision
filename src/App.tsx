@@ -20,7 +20,7 @@ interface Props {}
 class App extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.state = { votes: [], comments: [], user: "", chatIsVisible: true };
+    this.state = { votes: [], comments: [], user: "", chatIsVisible: false };
   }
 
   artists = [
