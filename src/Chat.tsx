@@ -1,7 +1,7 @@
 import React from "react";
 import { addComment } from "./FirebaseService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   user: string;
@@ -83,11 +83,15 @@ class Chat extends React.Component<Props, State> {
 
     return (
       <div className="chat-container">
-        <div className="close-icon" onClick={this.props.toggleChat}>
-          <FontAwesomeIcon icon={faTimesCircle} />
+        <div className="close-icon-container" onClick={this.props.toggleChat}>
+        <div className="close-icon">
+          <FontAwesomeIcon icon={faTimes} />
+
+        </div>
         </div>
         <div className="comment-list">
           {this.props.comments.map(this.renderComment)}
+          <div className="fade"></div>
           <div className="messages-end" ref={ref => (this.messagesEnd = ref)} />
         </div>
         <div className="chat">
