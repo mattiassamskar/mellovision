@@ -24,13 +24,13 @@ class App extends Component<Props, State> {
   }
 
   artists = [
-    "Andreas Johnson - Army Of Us",
-    "Malou Prytz - I Do Me",
-    "Oscar Enestad - I Love It",
-    "Jan Malmsjö - Leva livet",
-    "Vlad Reiser - Nakna i regnet",
-    "Hanna Ferm & Liamoo - Hold You",
-    "Margaret - Tempo"
+    "The Lovers Of Valdaro - Somebody Wants",
+    "Dolly Style - Habibi",
+    "Martin Stenmarck - Låt skiten brinna",
+    "Lina Hedlund - Victorious",
+    "Omar Rudberg - Om igen",
+    "Rebecka Karlsson - Who I Am",
+    "Jon Henrik Fjällgren - Norrsken"
   ];
 
   componentDidMount() {
