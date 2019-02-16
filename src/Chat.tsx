@@ -57,6 +57,35 @@ class Chat extends React.Component<Props, State> {
     </div>
   );
 
+  renderChat = () => (
+    <div className="chat-container">
+      <div className="close-icon-container" onClick={this.props.toggleChat}>
+        <div className="close-icon">
+          <FontAwesomeIcon icon={faTimes} />
+        </div>
+      </div>
+      <div className="comment-list">
+        {this.props.comments.map(this.renderComment)}
+        <div className="messages-end" ref={ref => (this.messagesEnd = ref)} />
+      </div>
+      <div className="chat">
+        <input
+          type="text"
+          className="u-full-width chat-input"
+          value={this.state.comment}
+          onChange={event => this.setState({ comment: event.target.value })}
+        />
+        <button
+          type="button"
+          className="button-primary button-margin"
+          onClick={this.addComment}
+        >
+          Skicka
+        </button>
+      </div>
+    </div>
+  );
+
   scrollToBottom = () => {
     this.messagesEnd &&
       this.messagesEnd.scrollIntoView({
@@ -77,40 +106,9 @@ class Chat extends React.Component<Props, State> {
   };
 
   render() {
-    if (!this.props.chatIsVisible) {
-      return this.renderChatPopup();
-    }
-
-    return (
-      <div className="chat-container">
-        <div className="close-icon-container" onClick={this.props.toggleChat}>
-        <div className="close-icon">
-          <FontAwesomeIcon icon={faTimes} />
-
-        </div>
-        </div>
-        <div className="comment-list">
-          {this.props.comments.map(this.renderComment)}
-          <div className="messages-end" ref={ref => (this.messagesEnd = ref)} />
-        </div>
-        <div className="chat">
-          <input
-            type="text"
-            
-            className="u-full-width chat-input"
-            value={this.state.comment}
-            onChange={event => this.setState({ comment: event.target.value })}
-          />
-          <button
-            type="button"
-            className="button-primary button-margin"
-            onClick={this.addComment}
-          >
-            Skicka
-          </button>
-        </div>
-      </div>
-    );
+    return this.props.chatIsVisible
+      ? this.renderChat()
+      : this.renderChatPopup();
   }
 }
 

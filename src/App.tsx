@@ -78,7 +78,19 @@ class App extends Component<Props, State> {
     });
   };
 
+  handleWindowScrolling = () => {
+    if (this.state.chatIsVisible) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.position = "fixed";
+    } else {
+      document.body.style.overflow = "scroll";
+      document.documentElement.style.position = "relative";
+    }
+  };
+
   render() {
+    this.handleWindowScrolling();
+
     return (
       <div className="container App">
         <div className="row" style={{ marginTop: "1vh" }}>
