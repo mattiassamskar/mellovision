@@ -79,16 +79,6 @@ class App extends Component<Props, State> {
   };
 
   render() {
-    if (this.state.chatIsVisible) {
-      return (
-        <Chat
-          user={this.state.user}
-          comments={this.state.comments}
-          chatIsVisible={true}
-          toggleChat={() => this.setState({ chatIsVisible: false })}
-        />
-      );
-    }
     return (
       <div className="container App">
         <div className="row" style={{ marginTop: "1vh" }}>
@@ -109,8 +99,14 @@ class App extends Component<Props, State> {
         <Chat
           user={this.state.user}
           comments={this.state.comments}
-          chatIsVisible={false}
-          toggleChat={() => this.setState({ chatIsVisible: true })}
+          chatIsVisible={this.state.chatIsVisible}
+          toggleChat={() =>
+            this.setState(prevState => {
+              return {
+                chatIsVisible: !prevState.chatIsVisible
+              };
+            })
+          }
         />
       </div>
     );
