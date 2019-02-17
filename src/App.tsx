@@ -5,7 +5,7 @@ import { initFirebaseVotes } from "./FirebaseService";
 import VoteList from "./VoteList/VoteList";
 import Login from "./Login";
 import TotalTopList from "./TotalTopList";
-import Chat, { UserComment } from "./Chat";
+import Chat, { UserComment } from "./Chat/Chat";
 
 interface State {
   votes: Vote[];

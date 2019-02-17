@@ -1,7 +1,8 @@
 import React from "react";
-import { addComment } from "./FirebaseService";
+import { addComment } from "../FirebaseService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import "./Chat.css"
 
 interface Props {
   user: string;

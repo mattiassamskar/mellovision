@@ -1,6 +1,6 @@
 import firebase from "firebase";
 import { Vote } from "./Voting";
-import { UserComment } from "./Chat";
+import { UserComment } from "./Chat/Chat";
 
 const VOTES = "votes";
 const COMMENTS = "comments";
