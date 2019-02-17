@@ -6,11 +6,10 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 interface Props {
   user: string;
   comments: UserComment[];
-  chatIsVisible: boolean;
-  toggleChat: () => void;
 }
 
 interface State {
+  isVisible: boolean;
   comment: string;
 }
 
@@ -25,6 +24,7 @@ class Chat extends React.Component<Props, State> {
     super(props);
 
     this.state = {
+      isVisible: false,
       comment: ""
     };
   }
@@ -39,6 +39,42 @@ class Chat extends React.Component<Props, State> {
     this.scrollToBottom();
   }
 
+  scrollToBottom = () => {
+    this.messagesEnd &&
+      this.messagesEnd.scrollIntoView({
+        behavior: "instant",
+        block: "nearest",
+        inline: "start"
+      });
+  };
+
+  addComment = () => {
+    if (this.state.comment === "") return;
+
+    addComment({
+      user: this.props.user,
+      comment: this.state.comment
+    });
+    this.setState({ comment: "" });
+  };
+
+  toggleIsVisible = () =>
+    this.setState(prevState => {
+      return {
+        isVisible: !prevState.isVisible
+      };
+    });
+
+  handleWindowScrolling = () => {
+    if (this.state.isVisible) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.position = "fixed";
+    } else {
+      document.body.style.overflow = "scroll";
+      document.documentElement.style.position = "relative";
+    }
+  };
+
   renderComment = (userComment: UserComment) => {
     const isMyComment = this.props.user === userComment.user;
     const className = isMyComment ? "my-comment" : "comment";
@@ -52,7 +88,7 @@ class Chat extends React.Component<Props, State> {
   };
 
   renderChatPopup = () => (
-    <div className="chat-popup" onClick={this.props.toggleChat}>
+    <div className="chat-popup" onClick={this.toggleIsVisible}>
       Chat
     </div>
   );
@@ -61,7 +97,7 @@ class Chat extends React.Component<Props, State> {
     <div>
       <div className="shadow" />
       <div className="chat-container">
-        <div className="close-icon-container" onClick={this.props.toggleChat}>
+        <div className="close-icon-container" onClick={this.toggleIsVisible}>
           <div className="close-icon">
             <FontAwesomeIcon icon={faTimes} />
           </div>
@@ -89,29 +125,9 @@ class Chat extends React.Component<Props, State> {
     </div>
   );
 
-  scrollToBottom = () => {
-    this.messagesEnd &&
-      this.messagesEnd.scrollIntoView({
-        behavior: "instant",
-        block: "nearest",
-        inline: "start"
-      });
-  };
-
-  addComment = () => {
-    if (this.state.comment === "") return;
-
-    addComment({
-      user: this.props.user,
-      comment: this.state.comment
-    });
-    this.setState({ comment: "" });
-  };
-
   render() {
-    return this.props.chatIsVisible
-      ? this.renderChat()
-      : this.renderChatPopup();
+    this.handleWindowScrolling();
+    return this.state.isVisible ? this.renderChat() : this.renderChatPopup();
   }
 }
 

@@ -1,12 +1,12 @@
 import React from "react";
-import { Vote } from "./Voting";
+import { Vote } from "../Voting";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMicrophone,
   faMusic,
   faTshirt
 } from "@fortawesome/free-solid-svg-icons";
-import { calculateVoteScore } from "./utils";
+import { calculateVoteScore } from "../utils";
 import "./VoteList.css";
 
 interface State {}
