@@ -3,7 +3,7 @@ import "./App.css";
 import Voting, { Vote } from "./Voting";
 import { initFirebaseVotes } from "./FirebaseService";
 import VoteList from "./VoteList/VoteList";
-import Login from "./Login";
+import Login from "./Login/Login";
 import TotalTopList from "./TotalTopList";
 import Chat, { UserComment } from "./Chat/Chat";
 
