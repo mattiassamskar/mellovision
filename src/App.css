@@ -19,14 +19,6 @@ html {
   margin-bottom: 3vh;
   box-shadow: 2px 2px 4px -1px rgba(0, 0, 0, 0.5);
 }
-.votelist {
-  background: #fbaed2;
-  padding: 1vh;
-  opacity: 0.95;
-  height: 70vh;
-  overflow-y: scroll;
-  margin-bottom: 3vh;
-}
 .toplists-container {
   background: #fbaed2;
   padding: 1vh;

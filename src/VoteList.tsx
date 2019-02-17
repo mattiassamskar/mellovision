@@ -7,6 +7,7 @@ import {
   faTshirt
 } from "@fortawesome/free-solid-svg-icons";
 import { calculateVoteScore } from "./utils";
+import "./VoteList.css";
 
 interface State {}
 
@@ -16,84 +17,51 @@ interface Props {
 }
 
 class VoteList extends React.Component<Props, State> {
-  groupedTopList = () => {
-    const toplistPerArtist = this.props.artists.map(artist => {
-      const artistVotes = this.props.votes.filter(
-        vote => vote.artist === artist
-      );
-      artistVotes.sort((a, b) => calculateVoteScore(b) - calculateVoteScore(a));
-
+  artistVoteLists = () => {
+    const voteList = this.props.artists.map(artist => {
+      const votes = this.props.votes.filter(vote => vote.artist === artist);
+      votes.sort((a, b) => calculateVoteScore(b) - calculateVoteScore(a));
       return {
         artist,
-        votes: artistVotes
+        votes
       };
     });
-    toplistPerArtist.reverse();
-    return toplistPerArtist.filter(toplist => toplist.votes.length > 0);
+    voteList.reverse();
+    return voteList.filter(votelist => votelist.votes.length > 0);
   };
+
+  renderVoteListHeader = () => (
+    <div className="votelist-vote">
+      <div className="votelist-left" />
+      <div className="votelist-right">
+        <FontAwesomeIcon icon={faMusic} size="xs" />
+        <FontAwesomeIcon icon={faMicrophone} size="xs" />
+        <FontAwesomeIcon icon={faTshirt} size="xs" />
+      </div>
+    </div>
+  );
+
+  renderVote = (vote: Vote) => (
+    <div key={vote.user} className="votelist-vote">
+      <div className="votelist-left">{vote.user}</div>
+      <div className="votelist-right">
+        <div>{vote.music}</div>
+        <div>{vote.performance}</div>
+        <div>{vote.clothes}</div>
+      </div>
+    </div>
+  );
 
   render() {
     return (
-      <div className="row votelist">
-        <div>
-          <h4>Röster</h4>
-        </div>
+      <div className="row votelist-container">
         <div className="twelve columns">
-          {this.groupedTopList().map(toplist => (
-            <div
-              key={toplist.artist}
-              style={{
-                marginBottom: "1rem",
-                marginRight: "1rem"
-              }}
-            >
-              <b>{toplist.artist}</b>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  marginTop: "0.5rem"
-                }}
-              >
-                <div style={{ width: "70%" }} />
-                <div
-                  style={{
-                    width: "30%",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "flex-end",
-                    marginLeft: "10px"
-                  }}
-                >
-                  <FontAwesomeIcon icon={faMusic} size="xs" />
-                  <FontAwesomeIcon icon={faMicrophone} size="xs" />
-                  <FontAwesomeIcon icon={faTshirt} size="xs" />
-                </div>
-              </div>
-              <div>
-                {toplist.votes.map(vote => (
-                  <div
-                    key={vote.user}
-                    style={{ display: "flex", justifyContent: "space-between" }}
-                  >
-                    <div style={{ width: "70%", overflow: "hidden" }}>
-                      <div>{vote.user}</div>
-                    </div>
-                    <div
-                      style={{
-                        width: "30%",
-                        display: "flex",
-                        justifyContent: "space-between",
-                        marginLeft: "10px"
-                      }}
-                    >
-                      <span>{vote.music}</span>
-                      <span>{vote.performance}</span>
-                      <span>{vote.clothes}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
+          <h4>Röster</h4>
+          {this.artistVoteLists().map(votelist => (
+            <div key={votelist.artist} className="votelist">
+              <b>{votelist.artist}</b>
+              {this.renderVoteListHeader()}
+              {votelist.votes.map(this.renderVote)}
             </div>
           ))}
         </div>
