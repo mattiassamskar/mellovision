@@ -29,7 +29,7 @@ class VoteList extends React.Component<Props, State> {
       };
     });
     toplistPerArtist.reverse();
-    return toplistPerArtist;
+    return toplistPerArtist.filter(toplist => toplist.votes.length > 0);
   };
 
   render() {
@@ -41,16 +41,21 @@ class VoteList extends React.Component<Props, State> {
         <div className="twelve columns">
           {this.groupedTopList().map(toplist => (
             <div
-            key={toplist.artist}
+              key={toplist.artist}
               style={{
                 marginBottom: "1rem",
                 marginRight: "1rem"
               }}
             >
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <div style={{ width: "70%" }}>
-                  <b>{toplist.artist}</b>
-                </div>
+              <b>{toplist.artist}</b>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  marginTop: "0.5rem"
+                }}
+              >
+                <div style={{ width: "70%" }} />
                 <div
                   style={{
                     width: "30%",
