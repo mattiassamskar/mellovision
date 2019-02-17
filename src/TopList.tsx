@@ -1,5 +1,6 @@
 import React from "react";
 import { Vote } from "./Voting";
+import { calculateVoteScore } from "./utils";
 
 interface UserTopList {
   user: string;
@@ -29,7 +30,7 @@ class TopList extends React.Component<Props, State> {
         .map(vote => {
           return {
             artist: vote.artist,
-            points: vote.music * 3 + vote.performance * 2 + vote.clothes * 1
+            points: calculateVoteScore(vote)
           };
         });
       votes.sort((vote1, vote2) => vote2.points - vote1.points);

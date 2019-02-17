@@ -105,9 +105,8 @@ class App extends Component<Props, State> {
             artists={this.artists}
           />
         )}
-        <VoteList votes={this.state.votes} />
+        <VoteList votes={this.state.votes} artists={this.artists} />
         <TotalTopList votes={this.state.votes} artists={this.artists} />
-        <TopList votes={this.state.votes} />
         <Chat
           user={this.state.user}
           comments={this.state.comments}
