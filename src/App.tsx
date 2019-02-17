@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Voting, { Vote } from "./Voting";
 import { initFirebaseVotes } from "./FirebaseService";
-import VoteList from "./VoteList";
-import TopList from "./TopList";
+import VoteList from "./VoteList/VoteList";
 import Login from "./Login";
 import TotalTopList from "./TotalTopList";
 import Chat, { UserComment } from "./Chat";
@@ -110,13 +109,7 @@ class App extends Component<Props, State> {
         <Chat
           user={this.state.user}
           comments={this.state.comments}
-          chatIsVisible={this.state.chatIsVisible}
-          toggleChat={() =>
-            this.setState(prevState => {
-              return {
-                chatIsVisible: !prevState.chatIsVisible
-              };
-            })
+
           }
         />
       </div>
