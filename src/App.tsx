@@ -23,13 +23,13 @@ class App extends Component<Props, State> {
   }
 
   artists = [
-    "The Lovers Of Valdaro - Somebody Wants",
-    "Dolly Style - Habibi",
-    "Martin Stenmarck - Låt skiten brinna",
-    "Lina Hedlund - Victorious",
-    "Omar Rudberg - Om igen",
-    "Rebecka Karlsson - Who I Am",
-    "Jon Henrik Fjällgren - Norrsken"
+    "Pagan Fury - Stormbringer",
+    "Anton Hagman - Känner dig",
+    "Lisa Ajax - Torn",
+    "Arvingarna - I  Do",
+    "Bishara - On My Own",
+    "Ann-Louise Hanson - Kärleken finns kvar",
+    "John Lundvik - Too Late For Love"
   ];
 
   componentDidMount() {
