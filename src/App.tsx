@@ -23,13 +23,18 @@ class App extends Component<Props, State> {
   }
 
   artists = [
-    "Pagan Fury - Stormbringer",
-    "Anton Hagman - Känner dig",
+    "Jon Henrik Fjällgren - Norrsken",
     "Lisa Ajax - Torn",
-    "Arvingarna - I  Do",
+    "Mohombi - Hello",
+    "Lina Hedlund - Victorious",
     "Bishara - On My Own",
-    "Ann-Louise Hanson - Kärleken finns kvar",
-    "John Lundvik - Too Late For Love"
+    "Anna Bergendahl - Ashes To Ashes",
+    "Nano - Chasing Rivers",
+    "Hanna Ferm & Liamoo - Hold You",
+    "Malou Prytz - I Do Me",
+    "John Lundvik - Too Late For Love",
+    "Wiktoria - Not With Me",
+    "Arvingarna - I Do"
   ];
 
   componentDidMount() {
@@ -94,10 +99,7 @@ class App extends Component<Props, State> {
         )}
         <VoteList votes={this.state.votes} artists={this.artists} />
         <TotalTopList votes={this.state.votes} artists={this.artists} />
-        <Chat
-          user={this.state.user}
-          comments={this.state.comments}
-        />
+        <Chat user={this.state.user} comments={this.state.comments} />
       </div>
     );
   }
