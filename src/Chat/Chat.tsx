@@ -2,7 +2,7 @@ import React from "react";
 import { addComment } from "../FirebaseService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import "./Chat.css"
+import "./Chat.css";
 
 interface Props {
   user: string;
@@ -30,7 +30,7 @@ class Chat extends React.Component<Props, State> {
     };
   }
 
-  messagesEnd: any;
+  messagesEnd = React.createRef<HTMLDivElement>();
 
   componentDidMount() {
     this.scrollToBottom();
@@ -41,9 +41,9 @@ class Chat extends React.Component<Props, State> {
   }
 
   scrollToBottom = () => {
-    this.messagesEnd &&
-      this.messagesEnd.scrollIntoView({
-        behavior: "instant",
+    this.messagesEnd.current &&
+      this.messagesEnd.current.scrollIntoView({
+        behavior: "auto",
         block: "nearest",
         inline: "start"
       });
@@ -105,7 +105,7 @@ class Chat extends React.Component<Props, State> {
         </div>
         <div className="comment-list">
           {this.props.comments.map(this.renderComment)}
-          <div className="messages-end" ref={ref => (this.messagesEnd = ref)} />
+          <div className="messages-end" ref={this.messagesEnd} />
         </div>
         <div className="chat">
           <input
