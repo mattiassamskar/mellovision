@@ -85,8 +85,21 @@ class App extends Component<Props, State> {
   render() {
     return (
       <div className="container App">
-        <div className="row" style={{ marginTop: "1vh" }}>
-          <img src="logo.png" width="100%" alt="logo" />
+        <div
+          className="row"
+          style={{
+            marginTop: "1vh",
+            marginBottom: "5vh",
+            display: "flex",
+            justifyContent: "center"
+          }}
+        >
+          <img
+            src="logo.svg"
+            width="100%"
+            style={{ width: "100%", maxWidth: "600px" }}
+            alt="logo"
+          />
         </div>
         {this.state.user === "" ? (
           <Login onUserSet={this.onUserSet} />
