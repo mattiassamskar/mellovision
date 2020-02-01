@@ -33,7 +33,7 @@ class App extends Component<Props, State> {
   ];
 
   componentDidMount() {
-    const user = localStorage.getItem("user");
+    const user = localStorage.getItem("user2020");
     if (user !== null) this.setState({ user: user });
     initFirebaseVotes(
       this.onVoteAdded,
@@ -43,7 +43,7 @@ class App extends Component<Props, State> {
   }
 
   onUserSet = (user: string) => {
-    localStorage.setItem("user", user);
+    localStorage.setItem("user2020", user);
     this.setState({ user: user });
   };
 
