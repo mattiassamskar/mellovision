@@ -23,22 +23,17 @@ class App extends Component<Props, State> {
   }
 
   artists = [
-    "Jon Henrik Fjällgren - Norrsken",
-    "Lisa Ajax - Torn",
-    "Mohombi - Hello",
-    "Lina Hedlund - Victorious",
-    "Bishara - On My Own",
-    "Anna Bergendahl - Ashes To Ashes",
-    "Nano - Chasing Rivers",
-    "Hanna Ferm & Liamoo - Hold You",
-    "Malou Prytz - I Do Me",
-    "John Lundvik - Too Late For Love",
-    "Wiktoria - Not With Me",
-    "Arvingarna - I Do"
+    "The Mamas - Move",
+    "Suzi P - Moves",
+    "Robin Bengtsson - Take a chance",
+    "Malou Prydz - Ballerina",
+    "OVÖ - Inga problem",
+    "Sonja Aldén - Sluta aldrig gå",
+    "Felix Sandman - Boys with emotions"
   ];
 
   componentDidMount() {
-    const user = localStorage.getItem("user");
+    const user = localStorage.getItem("user2020");
     if (user !== null) this.setState({ user: user });
     initFirebaseVotes(
       this.onVoteAdded,
@@ -48,7 +43,7 @@ class App extends Component<Props, State> {
   }
 
   onUserSet = (user: string) => {
-    localStorage.setItem("user", user);
+    localStorage.setItem("user2020", user);
     this.setState({ user: user });
   };
 
@@ -85,8 +80,21 @@ class App extends Component<Props, State> {
   render() {
     return (
       <div className="container App">
-        <div className="row" style={{ marginTop: "1vh" }}>
-          <img src="logo.png" width="100%" />
+        <div
+          className="row"
+          style={{
+            marginTop: "1vh",
+            marginBottom: "5vh",
+            display: "flex",
+            justifyContent: "center"
+          }}
+        >
+          <img
+            src="logo.svg"
+            width="100%"
+            style={{ width: "100%", maxWidth: "600px" }}
+            alt="logo"
+          />
         </div>
         {this.state.user === "" ? (
           <Login onUserSet={this.onUserSet} />
