@@ -23,18 +23,13 @@ class App extends Component<Props, State> {
   }
 
   artists = [
-    "Jon Henrik Fjällgren - Norrsken",
-    "Lisa Ajax - Torn",
-    "Mohombi - Hello",
-    "Lina Hedlund - Victorious",
-    "Bishara - On My Own",
-    "Anna Bergendahl - Ashes To Ashes",
-    "Nano - Chasing Rivers",
-    "Hanna Ferm & Liamoo - Hold You",
-    "Malou Prytz - I Do Me",
-    "John Lundvik - Too Late For Love",
-    "Wiktoria - Not With Me",
-    "Arvingarna - I Do"
+    "The Mamas - Move",
+    "Suzi P - Moves",
+    "Robin Bengtsson - Take a chance",
+    "Malou Prydz - Ballerina",
+    "OVÖ - Inga problem",
+    "Sonja Aldén - Sluta aldrig gå",
+    "Felix Sandman - Boys with emotions"
   ];
 
   componentDidMount() {
