@@ -23,17 +23,17 @@ class App extends Component<Props, State> {
   }
 
   artists = [
-    "The Mamas - Move",
-    "Suzi P - Moves",
-    "Robin Bengtsson - Take a chance",
-    "Malou Prydz - Ballerina",
-    "OVÖ - Inga problem",
-    "Sonja Aldén - Sluta aldrig gå",
-    "Felix Sandman - Boys with emotions"
+    "Klara Hammarström - Nobody",
+    "Jan Johanssen  - Miraklernas tid",
+    "Dotter - Bulletproof",
+    "Mendez feat. Alvaro Estrella - Vamos amigos",
+    "Linda Bengtzing - Alla mina sorger",
+    "Paul Rey - Talking in my sleep",
+    "Anna Bergendahl - Kingdom come",
   ];
 
   componentDidMount() {
-    const user = localStorage.getItem("user2020");
+    const user = localStorage.getItem("del2");
     if (user !== null) this.setState({ user: user });
     initFirebaseVotes(
       this.onVoteAdded,
@@ -43,14 +43,14 @@ class App extends Component<Props, State> {
   }
 
   onUserSet = (user: string) => {
-    localStorage.setItem("user2020", user);
+    localStorage.setItem("del2", user);
     this.setState({ user: user });
   };
 
   onVoteAdded = (vote: Vote) => {
     this.setState((prevState: State) => {
       return {
-        votes: [vote, ...prevState.votes]
+        votes: [vote, ...prevState.votes],
       };
     });
   };
@@ -64,7 +64,7 @@ class App extends Component<Props, State> {
       const left = prevState.votes.slice(0, index);
       const right = prevState.votes.slice(index + 1);
       return {
-        votes: left.concat(changedVote, right)
+        votes: left.concat(changedVote, right),
       };
     });
   };
@@ -72,7 +72,7 @@ class App extends Component<Props, State> {
   onCommentAdded = (comment: UserComment) => {
     this.setState((prevState: State) => {
       return {
-        comments: [...prevState.comments, comment]
+        comments: [...prevState.comments, comment],
       };
     });
   };
@@ -86,7 +86,7 @@ class App extends Component<Props, State> {
             marginTop: "1vh",
             marginBottom: "5vh",
             display: "flex",
-            justifyContent: "center"
+            justifyContent: "center",
           }}
         >
           <img
