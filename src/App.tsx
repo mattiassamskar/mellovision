@@ -23,17 +23,19 @@ class App extends Component<Props, State> {
   }
 
   artists = [
-    "Klara Hammarström - Nobody",
-    "Jan Johanssen  - Miraklernas tid",
-    "Dotter - Bulletproof",
-    "Mendez feat. Alvaro Estrella - Vamos amigos",
-    "Linda Bengtzing - Alla mina sorger",
-    "Paul Rey - Talking in my sleep",
-    "Anna Bergendahl - Kingdom come",
+    "Mariette – Shout it out",
+    "Albin Johnsén – Livet börjar nu",
+    "Drängarna – Piga och dräng",
+    "Amanda Aasa – Late",
+    "Anis don Demina – Vem är som oss",
+    "Faith Kakembo – Crying rivers",
+    "Mohombi – Winners",
   ];
 
+  key = "del3";
+
   componentDidMount() {
-    const user = localStorage.getItem("del2");
+    const user = localStorage.getItem(this.key);
     if (user !== null) this.setState({ user: user });
     initFirebaseVotes(
       this.onVoteAdded,
@@ -43,7 +45,7 @@ class App extends Component<Props, State> {
   }
 
   onUserSet = (user: string) => {
-    localStorage.setItem("del2", user);
+    localStorage.setItem(this.key, user);
     this.setState({ user: user });
   };
 
