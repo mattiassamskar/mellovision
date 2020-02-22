@@ -23,16 +23,16 @@ class App extends Component<Props, State> {
   }
 
   artists = [
-    "Mariette – Shout it out",
-    "Albin Johnsén – Livet börjar nu",
-    "Drängarna – Piga och dräng",
-    "Amanda Aasa – Late",
-    "Anis don Demina – Vem är som oss",
-    "Faith Kakembo – Crying rivers",
-    "Mohombi – Winners",
+    "Frida Öhrn - We are one",
+    "William Strid - Molnljus",
+    "Nanne Grönvall - Carpool karaoke",
+    "Victor Crone - Troubled waters",
+    "Ellen Benediktson och Simon Peyron - Surface",
+    "Jakob Karlberg - Om du tror att jag saknar dig",
+    "Hanna Ferm - Brave",
   ];
 
-  key = "del3";
+  key = "del4";
 
   componentDidMount() {
     const user = localStorage.getItem(this.key);
