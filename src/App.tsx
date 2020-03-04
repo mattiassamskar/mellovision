@@ -23,16 +23,21 @@ class App extends Component<Props, State> {
   }
 
   artists = [
-    "Frida Öhrn - We are one",
-    "William Strid - Molnljus",
-    "Nanne Grönvall - Carpool karaoke",
-    "Victor Crone - Troubled waters",
-    "Ellen Benediktson och Simon Peyron - Surface",
-    "Jakob Karlberg - Om du tror att jag saknar dig",
-    "Hanna Ferm - Brave",
+    "Troubled waters - Victor Crone",
+    "Talking in my sleep - Paul Rey",
+    "Move - The Mamas",
+    "Winners - Mohombi",
+    "Brave - Hanna Ferm",
+    "Vamos amigos - Mendez feat. Alvaro Estrella",
+    "Bulletproof - Dotter",
+    "Take a change - Robin Bengtsson",
+    "Shout it out - Mariette",
+    "Boys with emotions - Felix Sandman",
+    "Kingdom come - Anna Bergendahl",
+    "Vem e som oss - Anis Don Demina",
   ];
 
-  key = "del4";
+  key = "del5";
 
   componentDidMount() {
     const user = localStorage.getItem(this.key);
