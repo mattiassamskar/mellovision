@@ -23,21 +23,16 @@ class App extends Component<Props, State> {
   }
 
   artists = [
-    "Troubled waters - Victor Crone",
-    "Talking in my sleep - Paul Rey",
-    "Move - The Mamas",
-    "Winners - Mohombi",
-    "Brave - Hanna Ferm",
-    "Vamos amigos - Mendez feat. Alvaro Estrella",
-    "Bulletproof - Dotter",
-    "Take a change - Robin Bengtsson",
-    "Shout it out - Mariette",
-    "Boys with emotions - Felix Sandman",
-    "Kingdom come - Anna Bergendahl",
-    "Vem e som oss - Anis Don Demina",
+    "Kadiatou – One touch",
+    "Lillasyster – Pretender",
+    "Jessica Andersson – Horizon",
+    "Paul Rey –The missing piece",
+    "Arvingarna – Tänker inte alls gå hem",
+    "Nathalie Brydolf – Fingerprints",
+    "Danny Saucedo – Dandi dansa",
   ];
 
-  key = "del5";
+  key = "20210206";
 
   componentDidMount() {
     const user = localStorage.getItem(this.key);
