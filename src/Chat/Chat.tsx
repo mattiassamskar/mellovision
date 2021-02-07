@@ -26,7 +26,7 @@ class Chat extends React.Component<Props, State> {
 
     this.state = {
       isVisible: false,
-      comment: ""
+      comment: "",
     };
   }
 
@@ -45,7 +45,7 @@ class Chat extends React.Component<Props, State> {
       this.messagesEnd.current.scrollIntoView({
         behavior: "auto",
         block: "nearest",
-        inline: "start"
+        inline: "start",
       });
   };
 
@@ -54,15 +54,15 @@ class Chat extends React.Component<Props, State> {
 
     addComment({
       user: this.props.user,
-      comment: this.state.comment
+      comment: this.state.comment,
     });
     this.setState({ comment: "" });
   };
 
   toggleIsVisible = () =>
-    this.setState(prevState => {
+    this.setState((prevState) => {
       return {
-        isVisible: !prevState.isVisible
+        isVisible: !prevState.isVisible,
       };
     });
 
@@ -112,7 +112,7 @@ class Chat extends React.Component<Props, State> {
             type="text"
             className="u-full-width chat-input"
             value={this.state.comment}
-            onChange={event => this.setState({ comment: event.target.value })}
+            onChange={(event) => this.setState({ comment: event.target.value })}
           />
           <button
             type="button"
