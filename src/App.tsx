@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import "./App.css";
 import Voting, { Vote } from "./Voting";
 import { initFirebaseVotes } from "./FirebaseService";
@@ -22,16 +22,16 @@ class App extends Component<Props, State> {
   }
 
   artists = [
-    "Kadiatou – One touch",
-    "Lillasyster – Pretender",
-    "Jessica Andersson – Horizon",
-    "Paul Rey –The missing piece",
-    "Arvingarna – Tänker inte alls gå hem",
-    "Nathalie Brydolf – Fingerprints",
-    "Danny Saucedo – Dandi dansa",
+    "Anton Ewald – New religion",
+    "Julia Alfrida – Rich",
+    "WAHL featuring SAMI – 90-talet",
+    "Frida Green – The silence",
+    "Eva Rydberg & Ewa Roos – Rena rama ding dong",
+    "Patrik Jean – Tears run dry",
+    "Dotter – Little Tot",
   ];
 
-  key = "20210206";
+  key = "20210213";
 
   componentDidMount() {
     const user = localStorage.getItem(this.key);

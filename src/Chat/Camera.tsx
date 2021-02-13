@@ -1,8 +1,4 @@
-import {
-  faCross,
-  faDotCircle,
-  faTimes,
-} from "@fortawesome/free-solid-svg-icons";
+import { faDotCircle, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef } from "react";
 import Webcam from "react-webcam";
