@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 
 interface Props {
-  onAddComment: (comment: string) => void;
+  onAddComment: (comment: string, imageUrl: string) => void;
   onShowCamera: () => void;
 }
 
@@ -12,7 +12,7 @@ export const Message: React.FC<Props> = ({ onAddComment, onShowCamera }) => {
 
   const addComment = () => {
     if (!comment) return;
-    onAddComment(comment);
+    onAddComment(comment, "");
     setComment("");
   };
 

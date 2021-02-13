@@ -1,5 +1,5 @@
 import React from "react";
-import { addComment } from "../FirebaseService";
+import { addComment, uploadImage } from "../FirebaseService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./Chat.css";
@@ -20,6 +20,7 @@ export interface UserComment {
   key?: string;
   user: string;
   comment: string;
+  imageUrl: string;
 }
 
 class Chat extends React.Component<Props, State> {
@@ -51,11 +52,19 @@ class Chat extends React.Component<Props, State> {
       });
   };
 
-  addComment = (comment: string) => {
+  add = async (comment: string, imageSrc: string) => {
+    var imageUrl = "";
+
+    if (imageSrc) {
+      imageUrl = await uploadImage(imageSrc);
+    }
+
     addComment({
       user: this.props.user,
       comment,
+      imageUrl,
     });
+    this.setState({ showCamera: false });
   };
 
   toggleIsVisible = () =>
@@ -81,6 +90,9 @@ class Chat extends React.Component<Props, State> {
 
     return (
       <div key={userComment.key} className={className}>
+        {userComment.imageUrl && (
+          <img src={userComment.imageUrl} alt="" width={200} />
+        )}
         {!isMyComment && <div className="chat-user">{userComment.user}</div>}
         <div className="chat-comment">{userComment.comment}</div>
       </div>
@@ -109,10 +121,16 @@ class Chat extends React.Component<Props, State> {
             <FontAwesomeIcon icon={faTimes} />
           </div>
         </div>
-        {this.state.showCamera ? <Camera /> : this.renderCommentList()}
+        {this.state.showCamera ? (
+          <Camera onTakePicture={(imageSrc) => this.add("", imageSrc)} />
+        ) : (
+          this.renderCommentList()
+        )}
         <Message
-          onAddComment={this.addComment}
-          onShowCamera={() => this.setState({ showCamera: true })}
+          onAddComment={this.add}
+          onShowCamera={() =>
+            this.setState({ showCamera: !this.state.showCamera })
+          }
         />
       </div>
     </div>

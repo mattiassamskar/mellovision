@@ -1,4 +1,5 @@
 import firebase from "firebase";
+import { v4 as uuidv4 } from "uuid";
 import { Vote } from "./Voting";
 import { UserComment } from "./Chat/Chat";
 
@@ -11,7 +12,8 @@ export const initFirebaseVotes = (
   onCommentAdded: (comment: UserComment) => void
 ) => {
   firebase.initializeApp({
-    databaseURL: "https://eurovision-340ed.firebaseio.com"
+    databaseURL: "https://eurovision-340ed.firebaseio.com",
+    storageBucket: "gs://eurovision-340ed.appspot.com",
   });
 
   firebase
@@ -24,7 +26,7 @@ export const initFirebaseVotes = (
         artist: child.val().artist,
         music: child.val().music,
         performance: child.val().performance,
-        clothes: child.val().clothes
+        clothes: child.val().clothes,
       });
     });
 
@@ -38,7 +40,7 @@ export const initFirebaseVotes = (
         artist: child.val().artist,
         music: child.val().music,
         performance: child.val().performance,
-        clothes: child.val().clothes
+        clothes: child.val().clothes,
       });
     });
 
@@ -49,16 +51,14 @@ export const initFirebaseVotes = (
       onCommentAdded({
         key: child.key,
         user: child.val().user,
-        comment: child.val().comment
+        comment: child.val().comment,
+        imageUrl: child.val().imageUrl,
       });
     });
 };
 
 export const addVote = (vote: Vote) => {
-  firebase
-    .database()
-    .ref(VOTES)
-    .push(vote);
+  firebase.database().ref(VOTES).push(vote);
 };
 
 export const updateVote = (vote: Vote) => {
@@ -69,8 +69,12 @@ export const updateVote = (vote: Vote) => {
 };
 
 export const addComment = (comment: UserComment) => {
-  firebase
-    .database()
-    .ref(COMMENTS)
-    .push(comment);
+  firebase.database().ref(COMMENTS).push(comment);
+};
+
+export const uploadImage = async (bytes: string): Promise<string> => {
+  const name = uuidv4() + ".jpg";
+  const ref = firebase.storage().ref().child(name);
+  await ref.putString(bytes, "data_url");
+  return await ref.getDownloadURL();
 };
