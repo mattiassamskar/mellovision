@@ -11,7 +11,6 @@ interface State {
   votes: Vote[];
   comments: UserComment[];
   user: string;
-  chatIsVisible: boolean;
 }
 
 interface Props {}
@@ -19,7 +18,7 @@ interface Props {}
 class App extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.state = { votes: [], comments: [], user: "", chatIsVisible: false };
+    this.state = { votes: [], comments: [], user: "" };
   }
 
   artists = [

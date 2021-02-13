@@ -3,6 +3,8 @@ import { addComment } from "../FirebaseService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./Chat.css";
+import { Message } from "./Message";
+import { Camera } from "../Camera";
 
 interface Props {
   user: string;
@@ -11,7 +13,7 @@ interface Props {
 
 interface State {
   isVisible: boolean;
-  comment: string;
+  showCamera: boolean;
 }
 
 export interface UserComment {
@@ -25,8 +27,8 @@ class Chat extends React.Component<Props, State> {
     super(props);
 
     this.state = {
-      isVisible: false,
-      comment: "",
+      isVisible: true,
+      showCamera: true,
     };
   }
 
@@ -49,14 +51,11 @@ class Chat extends React.Component<Props, State> {
       });
   };
 
-  addComment = () => {
-    if (this.state.comment === "") return;
-
+  addComment = (comment: string) => {
     addComment({
       user: this.props.user,
-      comment: this.state.comment,
+      comment,
     });
-    this.setState({ comment: "" });
   };
 
   toggleIsVisible = () =>
@@ -94,6 +93,13 @@ class Chat extends React.Component<Props, State> {
     </div>
   );
 
+  renderCommentList = () => (
+    <div className="comment-list">
+      {this.props.comments.map(this.renderComment)}
+      <div className="messages-end" ref={this.messagesEnd} />
+    </div>
+  );
+
   renderChat = () => (
     <div>
       <div className="shadow" />
@@ -103,25 +109,11 @@ class Chat extends React.Component<Props, State> {
             <FontAwesomeIcon icon={faTimes} />
           </div>
         </div>
-        <div className="comment-list">
-          {this.props.comments.map(this.renderComment)}
-          <div className="messages-end" ref={this.messagesEnd} />
-        </div>
-        <div className="chat">
-          <input
-            type="text"
-            className="u-full-width chat-input"
-            value={this.state.comment}
-            onChange={(event) => this.setState({ comment: event.target.value })}
-          />
-          <button
-            type="button"
-            className="button-primary button-margin"
-            onClick={this.addComment}
-          >
-            Skicka
-          </button>
-        </div>
+        {this.state.showCamera ? <Camera /> : this.renderCommentList()}
+        <Message
+          onAddComment={this.addComment}
+          onShowCamera={() => this.setState({ showCamera: true })}
+        />
       </div>
     </div>
   );
