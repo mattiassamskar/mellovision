@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./Chat.css";
 import { Message } from "./Message";
-import { Camera } from "../Camera";
+import { Comments } from "./Comments";
 
 interface Props {
   user: string;
@@ -13,7 +13,6 @@ interface Props {
 
 interface State {
   isVisible: boolean;
-  showCamera: boolean;
 }
 
 export interface UserComment {
@@ -28,29 +27,9 @@ class Chat extends React.Component<Props, State> {
     super(props);
 
     this.state = {
-      isVisible: true,
-      showCamera: true,
+      isVisible: false,
     };
   }
-
-  messagesEnd = React.createRef<HTMLDivElement>();
-
-  componentDidMount() {
-    this.scrollToBottom();
-  }
-
-  componentDidUpdate() {
-    this.scrollToBottom();
-  }
-
-  scrollToBottom = () => {
-    this.messagesEnd.current &&
-      this.messagesEnd.current.scrollIntoView({
-        behavior: "auto",
-        block: "nearest",
-        inline: "start",
-      });
-  };
 
   add = async (comment: string, imageSrc: string) => {
     var imageUrl = "";
@@ -64,7 +43,6 @@ class Chat extends React.Component<Props, State> {
       comment,
       imageUrl,
     });
-    this.setState({ showCamera: false });
   };
 
   toggleIsVisible = () =>
@@ -84,31 +62,9 @@ class Chat extends React.Component<Props, State> {
     }
   };
 
-  renderComment = (userComment: UserComment) => {
-    const isMyComment = this.props.user === userComment.user;
-    const className = isMyComment ? "my-comment" : "comment";
-
-    return (
-      <div key={userComment.key} className={className}>
-        {userComment.imageUrl && (
-          <img src={userComment.imageUrl} alt="" width={200} />
-        )}
-        {!isMyComment && <div className="chat-user">{userComment.user}</div>}
-        <div className="chat-comment">{userComment.comment}</div>
-      </div>
-    );
-  };
-
   renderChatPopup = () => (
     <div className="chat-popup" onClick={this.toggleIsVisible}>
       Chat
-    </div>
-  );
-
-  renderCommentList = () => (
-    <div className="comment-list">
-      {this.props.comments.map(this.renderComment)}
-      <div className="messages-end" ref={this.messagesEnd} />
     </div>
   );
 
@@ -121,17 +77,9 @@ class Chat extends React.Component<Props, State> {
             <FontAwesomeIcon icon={faTimes} />
           </div>
         </div>
-        {this.state.showCamera ? (
-          <Camera onTakePicture={(imageSrc) => this.add("", imageSrc)} />
-        ) : (
-          this.renderCommentList()
-        )}
-        <Message
-          onAddComment={this.add}
-          onShowCamera={() =>
-            this.setState({ showCamera: !this.state.showCamera })
-          }
-        />
+
+        <Comments comments={this.props.comments} user={this.props.user} />
+        <Message onAddComment={this.add} />
       </div>
     </div>
   );

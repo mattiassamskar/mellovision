@@ -1,14 +1,15 @@
-import { faCamera } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faCamera } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import { Camera } from "./Camera";
 
 interface Props {
   onAddComment: (comment: string, imageUrl: string) => void;
-  onShowCamera: () => void;
 }
 
-export const Message: React.FC<Props> = ({ onAddComment, onShowCamera }) => {
+export const Message: React.FC<Props> = ({ onAddComment }) => {
   const [comment, setComment] = useState("");
+  const [showCamera, setShowCamera] = useState(false);
 
   const addComment = () => {
     if (!comment) return;
@@ -17,26 +18,58 @@ export const Message: React.FC<Props> = ({ onAddComment, onShowCamera }) => {
   };
 
   return (
-    <div className="chat">
-      <div className="close-icon-container" onClick={onShowCamera}>
-        <div className="close-icon">
-          <FontAwesomeIcon icon={faCamera} />
+    <div style={{ background: "#f6348f", paddingTop: 5, paddingBottom: 5 }}>
+      {showCamera && (
+        <>
+          <Camera
+            onTakePicture={(image) => {
+              onAddComment("", image);
+              setShowCamera(false);
+            }}
+            onClose={() => setShowCamera(false)}
+          />
+        </>
+      )}
+      {!showCamera && (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            margin: 5,
+            justifyContent: "space-between",
+          }}
+        >
+          <FontAwesomeIcon
+            icon={faCamera}
+            color="white"
+            style={{
+              margin: 5,
+              background: "#33c3f0",
+              padding: 6,
+              borderRadius: 5,
+            }}
+            onClick={() => setShowCamera(!showCamera)}
+          />
+          <input
+            type="text"
+            className="u-full-width chat-input"
+            value={comment}
+            onChange={(event) => setComment(event.target.value)}
+            style={{ marginBottom: 0 }}
+          />
+          <FontAwesomeIcon
+            icon={faArrowRight}
+            color="white"
+            style={{
+              margin: 5,
+              background: "#33c3f0",
+              padding: 6,
+              borderRadius: 5,
+            }}
+            onClick={addComment}
+          />
         </div>
-      </div>
-
-      <input
-        type="text"
-        className="u-full-width chat-input"
-        value={comment}
-        onChange={(event) => setComment(event.target.value)}
-      />
-      <button
-        type="button"
-        className="button-primary button-margin"
-        onClick={addComment}
-      >
-        Skicka
-      </button>
+      )}
     </div>
   );
 };
