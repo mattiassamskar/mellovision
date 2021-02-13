@@ -1,8 +1,10 @@
 import React from "react";
-import { addComment } from "../FirebaseService";
+import { addComment, uploadImage } from "../FirebaseService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./Chat.css";
+import { Message } from "./Message";
+import { Comments } from "./Comments";
 
 interface Props {
   user: string;
@@ -11,13 +13,13 @@ interface Props {
 
 interface State {
   isVisible: boolean;
-  comment: string;
 }
 
 export interface UserComment {
   key?: string;
   user: string;
   comment: string;
+  imageUrl: string;
 }
 
 class Chat extends React.Component<Props, State> {
@@ -26,37 +28,21 @@ class Chat extends React.Component<Props, State> {
 
     this.state = {
       isVisible: false,
-      comment: "",
     };
   }
 
-  messagesEnd = React.createRef<HTMLDivElement>();
+  add = async (comment: string, imageSrc: string) => {
+    var imageUrl = "";
 
-  componentDidMount() {
-    this.scrollToBottom();
-  }
-
-  componentDidUpdate() {
-    this.scrollToBottom();
-  }
-
-  scrollToBottom = () => {
-    this.messagesEnd.current &&
-      this.messagesEnd.current.scrollIntoView({
-        behavior: "auto",
-        block: "nearest",
-        inline: "start",
-      });
-  };
-
-  addComment = () => {
-    if (this.state.comment === "") return;
+    if (imageSrc) {
+      imageUrl = await uploadImage(imageSrc);
+    }
 
     addComment({
       user: this.props.user,
-      comment: this.state.comment,
+      comment,
+      imageUrl,
     });
-    this.setState({ comment: "" });
   };
 
   toggleIsVisible = () =>
@@ -76,18 +62,6 @@ class Chat extends React.Component<Props, State> {
     }
   };
 
-  renderComment = (userComment: UserComment) => {
-    const isMyComment = this.props.user === userComment.user;
-    const className = isMyComment ? "my-comment" : "comment";
-
-    return (
-      <div key={userComment.key} className={className}>
-        {!isMyComment && <div className="chat-user">{userComment.user}</div>}
-        <div className="chat-comment">{userComment.comment}</div>
-      </div>
-    );
-  };
-
   renderChatPopup = () => (
     <div className="chat-popup" onClick={this.toggleIsVisible}>
       Chat
@@ -103,25 +77,9 @@ class Chat extends React.Component<Props, State> {
             <FontAwesomeIcon icon={faTimes} />
           </div>
         </div>
-        <div className="comment-list">
-          {this.props.comments.map(this.renderComment)}
-          <div className="messages-end" ref={this.messagesEnd} />
-        </div>
-        <div className="chat">
-          <input
-            type="text"
-            className="u-full-width chat-input"
-            value={this.state.comment}
-            onChange={(event) => this.setState({ comment: event.target.value })}
-          />
-          <button
-            type="button"
-            className="button-primary button-margin"
-            onClick={this.addComment}
-          >
-            Skicka
-          </button>
-        </div>
+
+        <Comments comments={this.props.comments} user={this.props.user} />
+        <Message onAddComment={this.add} />
       </div>
     </div>
   );
