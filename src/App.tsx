@@ -22,16 +22,16 @@ class App extends Component<Props, State> {
   }
 
   artists = [
-    "Anton Ewald – New religion",
-    "Julia Alfrida – Rich",
-    "WAHL featuring SAMI – 90-talet",
-    "Frida Green – The silence",
-    "Eva Rydberg & Ewa Roos – Rena rama ding dong",
-    "Patrik Jean – Tears run dry",
-    "Dotter – Little Tot",
+    "Charlotte Perrelli – Still young",
+    "Emil Assergård – Om allting skiter sig",
+    "Klara Hammarström – Beat of broken hearts",
+    "Mustasch – Contagious",
+    "Elisa – Den du är",
+    "Alvaro Estrella – Baila baila",
+    "Tusse – Voices",
   ];
 
-  key = "20210213";
+  key = "20210220";
 
   componentDidMount() {
     const user = localStorage.getItem(this.key);
