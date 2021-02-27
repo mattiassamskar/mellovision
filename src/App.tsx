@@ -22,16 +22,16 @@ class App extends Component<Props, State> {
   }
 
   artists = [
-    "Charlotte Perrelli – Still young",
-    "Emil Assergård – Om allting skiter sig",
-    "Klara Hammarström – Beat of broken hearts",
-    "Mustasch – Contagious",
-    "Elisa – Den du är",
-    "Alvaro Estrella – Baila baila",
-    "Tusse – Voices",
+    "Tess Merkel – Good life",
+    "Lovad – Allting är precis likadant",
+    "Efraim Leo – Best of me",
+    "Mamas – In the middle",
+    "Sannex – All inclusive",
+    "Clara Klingenström – Behöver inte dig i dag",
+    "Eric Saade – Every minute",
   ];
 
-  key = "20210220";
+  key = "20210227";
 
   componentDidMount() {
     const user = localStorage.getItem(this.key);
