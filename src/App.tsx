@@ -22,21 +22,16 @@ class App extends Component<Props, State> {
   }
 
   artists = [
-    "Danny Saucedo – Dandi dansa",
-    "Klara Hammarström – Beat Of Broken Hearts",
-    "Anton Ewald – New Religion",
-    "The Mamas – In The Middle",
-    "Paul Rey – The Missing Piece",
-    "Charlotte Perrelli – Still Young",
-    "Tusse – Voices",
-    "Alvaro Estrella – Baila Baila",
-    "Clara Klingenström – Behöver inte dig idag",
-    "Eric Saade – Every Minute",
-    "Dotter – Little Tot",
-    "Arvingarna – Tänker inte alls gå hem",
+    "Malou Prytz - Bananas",
+    "Theoz - Som du vill",
+    "Shirley Clamp - Let there be angels",
+    "Omar Rudberg - Moving like that",
+    "Danne Stråhed - Hallabaloo",
+    "Cornelia Jakobs - Hold me closer",
+    "Robin Bengtsson - Innocent love",
   ];
 
-  key = "20210313";
+  key = "20220205";
 
   componentDidMount() {
     const user = localStorage.getItem(this.key);
