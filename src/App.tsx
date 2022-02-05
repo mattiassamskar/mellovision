@@ -91,7 +91,7 @@ class App extends Component<Props, State> {
           }}
         >
           <img
-            src="logo.svg"
+            src="logo2022.svg"
             style={{ width: "60%", height: "60%", maxWidth: "600px" }}
             alt="logo"
           />
