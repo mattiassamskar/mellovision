@@ -22,16 +22,16 @@ class App extends Component<Props, State> {
   }
 
   artists = [
-    "Malou Prytz - Bananas",
-    "Theoz - Som du vill",
-    "Shirley Clamp - Let there be angels",
-    "Omar Rudberg - Moving like that",
-    "Danne Stråhed - Hallabaloo",
-    "Cornelia Jakobs - Hold me closer",
-    "Robin Bengtsson - Innocent love",
+    "Liamoo - Bluffin",
+    "Niello & Lisa Ajax - Tror du att jag bryr mig",
+    "Samira Manners - I want to be loved",
+    "Alvaro Estrella - Suave",
+    "Browsing Collection - Face in the crowd",
+    "John Lundvik - Änglavakt",
+    "Tone Sekelius - My way",
   ];
 
-  key = "20220205";
+  key = "20220212";
 
   componentDidMount() {
     const user = localStorage.getItem(this.key);
