@@ -22,16 +22,16 @@ class App extends Component<Props, State> {
   }
 
   artists = [
-    "Liamoo - Bluffin",
-    "Niello & Lisa Ajax - Tror du att jag bryr mig",
-    "Samira Manners - I want to be loved",
-    "Alvaro Estrella - Suave",
-    "Browsing Collection - Face in the crowd",
-    "John Lundvik - Änglavakt",
-    "Tone Sekelius - My way",
+    "Cazzi Opeia - I can't get enough",
+    "Lancelot - Lyckligt slut",
+    "Lisa Miskovsky - Best to come",
+    "Tribe Friday - Shut me up",
+    "Faith Kakembo - Freedom",
+    "Linda Bengtzing - Fyrfaldigt hurra!",
+    "Anders Bagge - Bigger than the universe",
   ];
 
-  key = "20220212";
+  key = "20220219";
 
   componentDidMount() {
     const user = localStorage.getItem(this.key);
