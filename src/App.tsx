@@ -22,16 +22,21 @@ class App extends Component<Props, State> {
   }
 
   artists = [
-    "Cazzi Opeia - I can't get enough",
-    "Lancelot - Lyckligt slut",
-    "Lisa Miskovsky - Best to come",
-    "Tribe Friday - Shut me up",
+    "Klara Hammarström - Run to the Hills",
+    "Theoz - Som du vill",
+    "Anna Bergendahl - Higher Power",
+    "John Lundvik - Änglavakt",
+    "Tone Sekelius - My Way",
+    "Anders Bagge - Bigger Than the Universe ",
+    "Robin Bengtsson - Innocent Love",
     "Faith Kakembo - Freedom",
-    "Linda Bengtzing - Fyrfaldigt hurra!",
-    "Anders Bagge - Bigger than the universe",
+    "LIAMOO - BluFFin",
+    "Cornelia Jakobs - Hold Me Closer",
+    "Cazzi Opeia - I Can't Get Enough",
+    "MEDINA - In i dimman",
   ];
 
-  key = "20220219";
+  key = "20220312";
 
   componentDidMount() {
     const user = localStorage.getItem(this.key);
