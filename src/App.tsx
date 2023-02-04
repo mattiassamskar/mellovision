@@ -22,21 +22,16 @@ class App extends Component<Props, State> {
   }
 
   artists = [
-    "Klara Hammarström - Run to the Hills",
-    "Theoz - Som du vill",
-    "Anna Bergendahl - Higher Power",
-    "John Lundvik - Änglavakt",
-    "Tone Sekelius - My Way",
-    "Anders Bagge - Bigger Than the Universe ",
-    "Robin Bengtsson - Innocent Love",
-    "Faith Kakembo - Freedom",
-    "LIAMOO - BluFFin",
-    "Cornelia Jakobs - Hold Me Closer",
-    "Cazzi Opeia - I Can't Get Enough",
-    "MEDINA - In i dimman",
+    "Tone Sekelius - Rhythm of My Show",
+    "Loulou Lamotte - Inga sorger",
+    "Rejhan - Haunted",
+    "Elov & Beny - Raggen går",
+    "Victor Crone - Diamonds",
+    "Eva Rydberg & Ewa Roos - Länge leve livet",
+    "Jon Henrik Fjällgren - Where You Are (Sávežan)",
   ];
 
-  key = "20220312";
+  key = "20230204";
 
   componentDidMount() {
     const user = localStorage.getItem(this.key);
