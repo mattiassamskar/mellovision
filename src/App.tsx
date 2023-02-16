@@ -28,16 +28,16 @@ class App extends Component<Props, State> {
   }
 
   artists = [
-    "Tone Sekelius - Rhythm of My Show",
-    "Loulou Lamotte - Inga sorger",
-    "Rejhan - Haunted",
-    "Elov & Beny - Raggen går",
-    "Victor Crone - Diamonds",
-    "Eva Rydberg & Ewa Roos - Länge leve livet",
-    "Jon Henrik Fjällgren - Where You Are (Sávežan)",
+    "Paul Rey - Royals",
+    "Casanovas - Så kommer känslorna tillbaka",
+    "Melanie Wehbe - For the show",
+    "Nordman - Släpp alla sorger",
+    "Laurell - Sober",
+    "Ida-Lova - Låt hela stan se på",
+    "Marcus & Martinus - Air",
   ];
 
-  key = "20230204";
+  key = "20230218";
 
   componentDidMount() {
     const user = localStorage.getItem(this.key);
