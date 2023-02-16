@@ -40,11 +40,9 @@
   position: fixed;
   bottom: 0;
   right: 0;
-  height: 97%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  margin-left: 10px;
-  margin-right: 10px;
 }
 .shadow {
   position: fixed;
@@ -52,7 +50,7 @@
   right: 0;
   top: 0;
   bottom: 0;
-  opacity: 0.5;
+  opacity: 0.8;
   background-color: black;
 }
 .close-icon-container {
