@@ -18,7 +18,7 @@ export const Message: React.FC<Props> = ({ onAddComment }) => {
   };
 
   return (
-    <div style={{ background: "#f6348f", paddingTop: 5, paddingBottom: 5 }}>
+    <div style={{ background: "#E97DB1", paddingTop: 5, paddingBottom: 5 }}>
       {showCamera && (
         <>
           <Camera
@@ -44,7 +44,6 @@ export const Message: React.FC<Props> = ({ onAddComment }) => {
             color="white"
             style={{
               margin: 5,
-              background: "#33c3f0",
               padding: 6,
               borderRadius: 5,
             }}
@@ -62,7 +61,6 @@ export const Message: React.FC<Props> = ({ onAddComment }) => {
             color="white"
             style={{
               margin: 5,
-              background: "#33c3f0",
               padding: 6,
               borderRadius: 5,
             }}

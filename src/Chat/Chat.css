@@ -1,6 +1,6 @@
 .chat-popup {
-  height: 30px;
-  width: 80px;
+  height: 40px;
+  width: 100px;
   position: fixed;
   bottom: 0;
   right: 0;
@@ -36,19 +36,15 @@
   font-size: 16px;
 }
 .chat-container {
-  background: #e97db1;
+  background: #443a84;
   position: fixed;
   bottom: 0;
   right: 0;
-  height: 95%;
-  width: 300px;
+  height: 97%;
   display: flex;
   flex-direction: column;
   margin-left: 10px;
   margin-right: 10px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.3);
 }
 .shadow {
   position: fixed;
@@ -66,12 +62,10 @@
   padding: 5px;
 }
 .close-icon {
-  background: #02b7dd;
   color: white;
   display: flex;
   align-items: center;
   padding: 6px;
-  border-radius: 5px;
   justify-content: center;
 }
 .messages-end {
@@ -90,8 +84,8 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background-color: #02b7dd;
   color: white;
+  background-color: #02b7dd;
   margin-bottom: 10px;
   padding: 3px 3px 3px 8px;
   margin-right: 38px;

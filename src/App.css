@@ -6,6 +6,9 @@ button {
   background-color: #e97db1 !important;
   border-color: #e97db1 !important;
 }
+.app {
+  padding: 10px;
+}
 .voting {
   background: #443a84;
   padding: 1vh;
@@ -27,6 +30,13 @@ button {
 .totaltoplist-item {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 0.2rem;
+}
+.totaltoplist-artist {
+  color: #e97db1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .toplists {
   display: flex;

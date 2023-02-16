@@ -80,7 +80,7 @@ class App extends Component<Props, State> {
 
   render() {
     return (
-      <div className="container App">
+      <div className="container app">
         <div
           className="row"
           style={{

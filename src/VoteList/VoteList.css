@@ -29,8 +29,13 @@
 .votelist-vote {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 0.1rem;
 }
 .artist-header {
+  margin-bottom: 0.7rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   font-weight: bold;
   text-transform: uppercase;
   color: #e97db1;

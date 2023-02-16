@@ -34,9 +34,9 @@ class VoteList extends React.Component<Props, State> {
     <div className="votelist-vote">
       <div className="votelist-left" />
       <div className="votelist-right">
-        <FontAwesomeIcon icon={faMusic} size="xs" />
-        <FontAwesomeIcon icon={faMicrophone} size="xs" />
-        <FontAwesomeIcon icon={faTshirt} size="xs" />
+        <FontAwesomeIcon icon={faMusic} size="xs" color="#e97db1" />
+        <FontAwesomeIcon icon={faMicrophone} color="#e97db1" size="xs" />
+        <FontAwesomeIcon icon={faTshirt} color="#e97db1" size="xs" />
       </div>
     </div>
   );
