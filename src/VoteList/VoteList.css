@@ -1,10 +1,11 @@
 .votelist-container {
   background: #443a84;
-  padding: 1vh;
+  padding: 2vh 2vh 0 2vh;
   opacity: 0.95;
   height: 70vh;
   overflow-y: scroll;
   margin-bottom: 3vh;
+  border-radius: 4px;
 }
 .votelist {
   margin-bottom: 1rem;
@@ -29,10 +30,9 @@
 .votelist-vote {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.1rem;
 }
 .artist-header {
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.2rem;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

@@ -14,7 +14,7 @@ class Login extends React.Component<Props, State> {
     super(props);
 
     this.state = {
-      user: ""
+      user: "",
     };
   }
 
@@ -22,12 +22,12 @@ class Login extends React.Component<Props, State> {
     return (
       <div className="row login shake">
         <div className="twelve columns">
-          <h3>Hej, vad heter du?</h3>
+          <h3>Hej! Vad heter du?</h3>
           <input
             type="text"
             className="u-full-width"
             value={this.state.user}
-            onChange={event => this.setState({ user: event.target.value })}
+            onChange={(event) => this.setState({ user: event.target.value })}
           />
           <button
             type="button"

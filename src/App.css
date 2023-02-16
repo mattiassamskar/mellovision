@@ -11,9 +11,10 @@ button {
 }
 .voting {
   background: #443a84;
-  padding: 1vh;
+  padding: 2vh;
   margin-top: 1vh;
   margin-bottom: 3vh;
+  border-radius: 4px;
 }
 .toplists-container {
   background: #443a84;
@@ -24,8 +25,9 @@ button {
 }
 .totaltoplist-container {
   background: #443a84;
-  padding: 1vh;
+  padding: 2vh 2vh 0 2vh;
   margin-bottom: 3vh;
+  border-radius: 4px;
 }
 .totaltoplist-item {
   display: flex;

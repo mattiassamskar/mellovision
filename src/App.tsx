@@ -110,20 +110,22 @@ class App extends Component<Props, State> {
         {this.state.user === "" ? (
           <Login onUserSet={this.onUserSet} />
         ) : (
-          <Voting
-            user={this.state.user}
-            votes={this.state.votes}
-            artists={this.artists}
-          />
+          <>
+            <Voting
+              user={this.state.user}
+              votes={this.state.votes}
+              artists={this.artists}
+            />
+            <VoteList votes={this.state.votes} artists={this.artists} />
+            <TotalTopList votes={this.state.votes} artists={this.artists} />
+            <Chat
+              user={this.state.user}
+              comments={this.state.comments}
+              hasUnreadComments={this.state.hasUnreadComments}
+              onClearUnreadComments={this.onClearUnreadComments}
+            />
+          </>
         )}
-        <VoteList votes={this.state.votes} artists={this.artists} />
-        <TotalTopList votes={this.state.votes} artists={this.artists} />
-        <Chat
-          user={this.state.user}
-          comments={this.state.comments}
-          hasUnreadComments={this.state.hasUnreadComments}
-          onClearUnreadComments={this.onClearUnreadComments}
-        />
       </div>
     );
   }
