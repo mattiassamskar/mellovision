@@ -41,16 +41,14 @@ class TotalTopList extends React.Component<Props, State> {
         <div>
           <h4>TOPPLISTAN</h4>
         </div>
-        <div className="twelve columns">
+        <ul className="twelve columns">
           {this.calculateToplist().map((topList, index) => (
-            <div key={topList.artist} className="totaltoplist-item">
-              <div>
-                {index + 1}. {topList.artist}
-              </div>
+            <li key={topList.artist} className="totaltoplist-item">
+              <span className="totaltoplist-artist">{topList.artist}</span>
               <div>{Math.round(topList.points)}</div>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     );
   }
