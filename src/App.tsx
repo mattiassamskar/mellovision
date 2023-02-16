@@ -11,6 +11,7 @@ interface State {
   votes: Vote[];
   comments: UserComment[];
   user: string;
+  hasUnreadComments: boolean;
 }
 
 interface Props {}
@@ -18,7 +19,12 @@ interface Props {}
 class App extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.state = { votes: [], comments: [], user: "" };
+    this.state = {
+      votes: [],
+      comments: [],
+      user: "",
+      hasUnreadComments: false,
+    };
   }
 
   artists = [
@@ -73,7 +79,16 @@ class App extends Component<Props, State> {
   onCommentAdded = (comment: UserComment) => {
     this.setState((prevState: State) => {
       return {
+        hasUnreadComments: true,
         comments: [...prevState.comments, comment],
+      };
+    });
+  };
+
+  onClearUnreadComments = () => {
+    this.setState(() => {
+      return {
+        hasUnreadComments: false,
       };
     });
   };
@@ -103,7 +118,12 @@ class App extends Component<Props, State> {
         )}
         <VoteList votes={this.state.votes} artists={this.artists} />
         <TotalTopList votes={this.state.votes} artists={this.artists} />
-        <Chat user={this.state.user} comments={this.state.comments} />
+        <Chat
+          user={this.state.user}
+          comments={this.state.comments}
+          hasUnreadComments={this.state.hasUnreadComments}
+          onClearUnreadComments={this.onClearUnreadComments}
+        />
       </div>
     );
   }

@@ -9,6 +9,8 @@ import { Comments } from "./Comments";
 interface Props {
   user: string;
   comments: UserComment[];
+  hasUnreadComments: boolean;
+  onClearUnreadComments: () => void;
 }
 
 interface State {
@@ -45,12 +47,14 @@ class Chat extends React.Component<Props, State> {
     });
   };
 
-  toggleIsVisible = () =>
+  toggleIsVisible = () => {
     this.setState((prevState) => {
       return {
         isVisible: !prevState.isVisible,
       };
     });
+    this.props.onClearUnreadComments();
+  };
 
   handleWindowScrolling = () => {
     if (this.state.isVisible) {
@@ -64,6 +68,7 @@ class Chat extends React.Component<Props, State> {
 
   renderChatPopup = () => (
     <div className="chat-popup" onClick={this.toggleIsVisible}>
+      {this.props.hasUnreadComments && <div className="chat-alert"></div>}
       Chat
     </div>
   );
