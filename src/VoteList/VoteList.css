@@ -1,5 +1,5 @@
 .votelist-container {
-  background: #fbaed2;
+  background: #443a84;
   padding: 1vh;
   opacity: 0.95;
   height: 70vh;
@@ -29,4 +29,9 @@
 .votelist-vote {
   display: flex;
   justify-content: space-between;
+}
+.artist-header {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #e97db1;
 }

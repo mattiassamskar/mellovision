@@ -7,16 +7,16 @@ import { UserComment } from "./Chat/Chat";
 const VOTES = "votes";
 const COMMENTS = "comments";
 
+firebase.initializeApp({
+  databaseURL: "https://eurovision-340ed.firebaseio.com",
+  storageBucket: "gs://eurovision-340ed.appspot.com",
+});
+
 export const initFirebaseVotes = (
   onVoteAdded: (vote: Vote) => void,
   onVoteChanged: (vote: Vote) => void,
   onCommentAdded: (comment: UserComment) => void
 ) => {
-  firebase.initializeApp({
-    databaseURL: "https://eurovision-340ed.firebaseio.com",
-    storageBucket: "gs://eurovision-340ed.appspot.com",
-  });
-
   firebase
     .database()
     .ref(VOTES)

@@ -14,7 +14,7 @@
   letter-spacing: 0.1rem;
   text-transform: uppercase;
   margin-right: 10px;
-  background: #33c3f0;
+  background: #e97db1;
   color: white;
   text-align: center;
   border-top-left-radius: 5px;
@@ -36,7 +36,7 @@
   font-size: 16px;
 }
 .chat-container {
-  background: #f97db7;
+  background: #e97db1;
   position: fixed;
   bottom: 0;
   right: 0;
@@ -62,11 +62,11 @@
 .close-icon-container {
   display: flex;
   justify-content: flex-end;
-  color: #33c3f0;
+  color: #02b7dd;
   padding: 5px;
 }
 .close-icon {
-  background: #33c3f0;
+  background: #02b7dd;
   color: white;
   display: flex;
   align-items: center;
@@ -90,7 +90,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background-color: #33c3f0;
+  background-color: #02b7dd;
   color: white;
   margin-bottom: 10px;
   padding: 3px 3px 3px 8px;
@@ -107,7 +107,7 @@
   width: 0;
   height: 0;
   border: 10px solid transparent;
-  border-right-color: #33c3f0;
+  border-right-color: #02b7dd;
   border-left: 0;
   border-bottom: 0;
   margin-top: -10px;
@@ -118,7 +118,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background-color: #33c3f0;
+  background-color: #02b7dd;
   color: white;
   margin-bottom: 10px;
   padding: 3px 3px 3px 8px;
@@ -135,7 +135,7 @@
   width: 0;
   height: 0;
   border: 10px solid transparent;
-  border-left-color: #33c3f0;
+  border-left-color: #02b7dd;
   border-right: 0;
   border-bottom: 0;
   margin-top: -10px;

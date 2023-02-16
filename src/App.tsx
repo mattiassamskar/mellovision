@@ -85,16 +85,12 @@ class App extends Component<Props, State> {
           className="row"
           style={{
             marginTop: "1vh",
-            marginBottom: "5vh",
+            marginBottom: "1vh",
             display: "flex",
             justifyContent: "center",
           }}
         >
-          <img
-            src="logo2022.svg"
-            style={{ width: "60%", height: "60%", maxWidth: "600px" }}
-            alt="logo"
-          />
+          <div className="title">mellovision</div>
         </div>
         {this.state.user === "" ? (
           <Login onUserSet={this.onUserSet} />

@@ -1,27 +1,27 @@
-html {
-  background-image: url("background.jpg");
+body {
+  background: #02b7dd;
+  color: white;
+}
+button {
+  background-color: #e97db1 !important;
+  border-color: #e97db1 !important;
 }
 .voting {
-  background: #ffc7e4;
+  background: #443a84;
   padding: 1vh;
-  border-radius: 5px;
-  opacity: 0.99;
   margin-top: 1vh;
   margin-bottom: 3vh;
-  box-shadow: 2px 2px 4px -1px rgba(0, 0, 0, 0.5);
 }
 .toplists-container {
-  background: #fbaed2;
+  background: #443a84;
   padding: 1vh;
-  opacity: 0.95;
   height: 70vh;
   overflow-y: scroll;
   margin-bottom: 3vh;
 }
 .totaltoplist-container {
-  background: #fbaed2;
+  background: #443a84;
   padding: 1vh;
-  opacity: 0.95;
   margin-bottom: 3vh;
 }
 .totaltoplist-item {
@@ -50,4 +50,8 @@ html {
 .button-margin {
   margin-left: 10px;
 }
-
+.title {
+  font-family: "Monoton", cursive;
+  color: white;
+  font-size: 11vw;
+}
