@@ -67,10 +67,14 @@ class Chat extends React.Component<Props, State> {
   };
 
   renderChatPopup = () => (
-    <div className="chat-popup" onClick={this.toggleIsVisible}>
-      {this.props.hasUnreadComments && <div className="chat-alert"></div>}
+    <button
+      type="button"
+      className="button-primary chat-popup"
+      onClick={this.toggleIsVisible}
+    >
       Chat
-    </div>
+      {this.props.hasUnreadComments && <div className="chat-alert"></div>}
+    </button>
   );
 
   renderChat = () => (
