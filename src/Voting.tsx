@@ -1,15 +1,7 @@
 import React, { Component } from "react";
 import { addVote, updateVote } from "./FirebaseService";
+import { Vote } from "./types";
 import VotePicker from "./VotePicker";
-
-export interface Vote {
-  key?: string;
-  user: string;
-  artist: string;
-  music: number;
-  performance: number;
-  clothes: number;
-}
 
 interface State {
   selectedArtist: any;

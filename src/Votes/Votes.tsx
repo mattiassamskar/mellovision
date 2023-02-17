@@ -5,8 +5,8 @@ import {
   faMusic,
   faTshirt,
 } from "@fortawesome/free-solid-svg-icons";
-import { Vote } from "../Voting";
 import { calculateVoteScore } from "../utils";
+import { Vote } from "../types";
 
 export const Votes = ({
   artists,

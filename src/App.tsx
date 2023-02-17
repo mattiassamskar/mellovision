@@ -1,11 +1,12 @@
 import { Component } from "react";
 import "./App.css";
-import Voting, { Vote } from "./Voting";
+import Voting from "./Voting";
 import { initFirebaseVotes } from "./FirebaseService";
 import { Votes } from "./Votes/Votes";
 import Login from "./Login/Login";
-import TotalTopList from "./TotalTopList";
 import Chat, { UserComment } from "./Chat/Chat";
+import { Vote } from "./types";
+import { TopList } from "./Toplist/TopList";
 
 interface State {
   votes: Vote[];
@@ -117,7 +118,7 @@ class App extends Component<Props, State> {
               artists={this.artists}
             />
             <Votes votes={this.state.votes} artists={this.artists} />
-            <TotalTopList votes={this.state.votes} artists={this.artists} />
+            <TopList votes={this.state.votes} artists={this.artists} />
             <Chat
               user={this.state.user}
               comments={this.state.comments}
