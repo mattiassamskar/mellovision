@@ -1,12 +1,12 @@
 import { Component } from "react";
 import "./App.css";
-import Voting from "./Voting";
-import { initFirebaseVotes } from "./FirebaseService";
+import { Voting } from "./Voting/Voting";
+import { initFirebaseVotes } from "./firebase";
 import { Votes } from "./Votes/Votes";
 import Login from "./Login/Login";
-import Chat, { UserComment } from "./Chat/Chat";
-import { Vote } from "./types";
+import { UserComment, Vote } from "./types";
 import { TopList } from "./Toplist/TopList";
+import { Chat } from "./Chat/Chat";
 
 interface State {
   votes: Vote[];

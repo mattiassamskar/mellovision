@@ -1,5 +1,6 @@
 import { createRef, useEffect } from "react";
-import { UserComment } from "./Chat";
+import { UserComment } from "../types";
+import styles from "./Chat.module.css";
 
 interface Props {
   comments: UserComment[];
@@ -24,7 +25,7 @@ export const Comments: React.FC<Props> = (props) => {
 
     return (
       <div key={userComment.key} className={className}>
-        {!isMyComment && <div className="chat-user">{userComment.user}</div>}
+        {!isMyComment && <div className={styles.user}>{userComment.user}</div>}
         {userComment.imageUrl && (
           <img
             src={userComment.imageUrl}
@@ -33,7 +34,7 @@ export const Comments: React.FC<Props> = (props) => {
             style={{ marginTop: 6, marginBottom: 6, borderRadius: 5 }}
           />
         )}
-        <div className="chat-comment">{userComment.comment}</div>
+        <div className={styles.chatComment}>{userComment.comment}</div>
       </div>
     );
   };

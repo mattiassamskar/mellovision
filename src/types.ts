@@ -6,3 +6,10 @@ export interface Vote {
   performance: number;
   clothes: number;
 }
+
+export interface UserComment {
+  key?: string;
+  user: string;
+  comment: string;
+  imageUrl: string;
+}

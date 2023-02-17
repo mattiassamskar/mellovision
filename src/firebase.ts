@@ -2,7 +2,7 @@ import firebase from "firebase/app";
 import "firebase/database";
 import "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
-import { UserComment } from "./Chat/Chat";
+import { UserComment } from "./types";
 import { Vote } from "./types";
 
 const VOTES = "votes";

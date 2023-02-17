@@ -1,10 +1,11 @@
-import React from "react";
-import { addComment, uploadImage } from "../FirebaseService";
+import { useEffect, useState } from "react";
+import styles from "./Chat.module.css";
+import { addComment, uploadImage } from "../firebase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import "./Chat.css";
 import { Message } from "./Message";
 import { Comments } from "./Comments";
+import { UserComment } from "../types";
 
 interface Props {
   user: string;
@@ -13,90 +14,46 @@ interface Props {
   onClearUnreadComments: () => void;
 }
 
-interface State {
-  isVisible: boolean;
-}
+export const Chat = (props: Props) => {
+  const [isVisible, setIsVisible] = useState(false);
 
-export interface UserComment {
-  key?: string;
-  user: string;
-  comment: string;
-  imageUrl: string;
-}
+  useEffect(() => {
+    document.body.style.overflow = isVisible ? "hidden" : "scroll";
+    document.documentElement.style.position = isVisible ? "fixed" : "relative";
+  }, [isVisible]);
 
-class Chat extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      isVisible: false,
-    };
-  }
-
-  add = async (comment: string, imageSrc: string) => {
-    var imageUrl = "";
-
-    if (imageSrc) {
-      imageUrl = await uploadImage(imageSrc);
-    }
-
-    addComment({
-      user: this.props.user,
-      comment,
-      imageUrl,
-    });
+  const add = async (comment: string, imageSrc: string) => {
+    const imageUrl = imageSrc ? await uploadImage(imageSrc) : "";
+    addComment({ user: props.user, comment, imageUrl });
   };
 
-  toggleIsVisible = () => {
-    this.setState((prevState) => {
-      return {
-        isVisible: !prevState.isVisible,
-      };
-    });
-    this.props.onClearUnreadComments();
+  const toggleIsVisible = () => {
+    setIsVisible(!isVisible);
+    props.onClearUnreadComments();
   };
 
-  handleWindowScrolling = () => {
-    if (this.state.isVisible) {
-      document.body.style.overflow = "hidden";
-      document.documentElement.style.position = "fixed";
-    } else {
-      document.body.style.overflow = "scroll";
-      document.documentElement.style.position = "relative";
-    }
-  };
-
-  renderChatPopup = () => (
-    <button
-      type="button"
-      className="button-primary chat-popup"
-      onClick={this.toggleIsVisible}
-    >
-      Chat
-      {this.props.hasUnreadComments && <div className="chat-alert"></div>}
-    </button>
-  );
-
-  renderChat = () => (
+  return isVisible ? (
     <div>
-      <div className="shadow" />
-      <div className="chat-container">
-        <div className="close-icon-container" onClick={this.toggleIsVisible}>
-          <div className="close-icon">
+      <div className={styles.shadow} />
+      <div className={styles.container}>
+        <div className={styles.closeIconContainer} onClick={toggleIsVisible}>
+          <div className={styles.closeIcon}>
             <FontAwesomeIcon icon={faTimes} />
           </div>
         </div>
 
-        <Comments comments={this.props.comments} user={this.props.user} />
-        <Message onAddComment={this.add} />
+        <Comments comments={props.comments} user={props.user} />
+        <Message onAddComment={add} />
       </div>
     </div>
+  ) : (
+    <button
+      type="button"
+      className={`button-primary ${styles.popup}`}
+      onClick={toggleIsVisible}
+    >
+      Chat
+      {props.hasUnreadComments && <div className={styles.alert}></div>}
+    </button>
   );
-
-  render() {
-    this.handleWindowScrolling();
-    return this.state.isVisible ? this.renderChat() : this.renderChatPopup();
-  }
-}
-
-export default Chat;
+};
