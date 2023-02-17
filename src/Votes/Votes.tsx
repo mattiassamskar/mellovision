@@ -21,11 +21,11 @@ export const Votes = ({
       artistVotes.sort((a, b) => calculateVoteScore(b) - calculateVoteScore(a));
       return {
         artist,
-        votes,
+        artistVotes,
       };
     });
     voteList.reverse();
-    return voteList.filter((votelist) => votelist.votes.length > 0);
+    return voteList.filter((votelist) => votelist.artistVotes.length > 0);
   };
 
   return (
@@ -47,7 +47,7 @@ export const Votes = ({
                 <FontAwesomeIcon icon={faTshirt} color="#e97db1" size="xs" />
               </div>
             </div>
-            {votelist.votes.map((vote) => (
+            {votelist.artistVotes.map((vote) => (
               <div key={vote.user} className={styles.vote}>
                 <div className={styles.left}>{vote.user}</div>
                 <div className={styles.right}>
