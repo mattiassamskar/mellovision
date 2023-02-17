@@ -1,4 +1,4 @@
-.votelist-container {
+.container {
   background: #443a84;
   padding: 2vh 2vh 0 2vh;
   opacity: 0.95;
@@ -7,31 +7,31 @@
   margin-bottom: 3vh;
   border-radius: 4px;
 }
-.votelist {
+.list {
   margin-bottom: 1rem;
   margin-right: 1rem;
 }
-.votelist-header {
+.header {
   display: flex;
   justify-content: space-between;
   margin-top: 0.5rem;
 }
-.votelist-left {
+.vote {
+  display: flex;
+  justify-content: space-between;
+}
+.left {
   width: 70%;
   overflow: hidden;
 }
-.votelist-right {
+.right {
   width: 30%;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   margin-left: 10px;
 }
-.votelist-vote {
-  display: flex;
-  justify-content: space-between;
-}
-.artist-header {
+.artistHeader {
   margin-bottom: 0.2rem;
   overflow: hidden;
   white-space: nowrap;

@@ -2,7 +2,7 @@ import { Component } from "react";
 import "./App.css";
 import Voting, { Vote } from "./Voting";
 import { initFirebaseVotes } from "./FirebaseService";
-import VoteList from "./VoteList/VoteList";
+import { Votes } from "./Votes/Votes";
 import Login from "./Login/Login";
 import TotalTopList from "./TotalTopList";
 import Chat, { UserComment } from "./Chat/Chat";
@@ -116,7 +116,7 @@ class App extends Component<Props, State> {
               votes={this.state.votes}
               artists={this.artists}
             />
-            <VoteList votes={this.state.votes} artists={this.artists} />
+            <Votes votes={this.state.votes} artists={this.artists} />
             <TotalTopList votes={this.state.votes} artists={this.artists} />
             <Chat
               user={this.state.user}
