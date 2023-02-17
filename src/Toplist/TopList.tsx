@@ -1,3 +1,4 @@
+import styles from "./TopList.module.css";
 import { Vote } from "../types";
 import { calculateVoteScore } from "../utils";
 
@@ -25,14 +26,14 @@ export const TopList = ({
   };
 
   return (
-    <div className="row totaltoplist-container">
+    <div className={`row ${styles.container}`}>
       <div>
         <h4>TOPPLISTAN</h4>
       </div>
       <ul className="twelve columns">
         {calculateToplist().map((topList) => (
-          <li key={topList.artist} className="totaltoplist-item">
-            <span className="totaltoplist-artist">{topList.artist}</span>
+          <li key={topList.artist} className={styles.item}>
+            <span className={styles.artist}>{topList.artist}</span>
             <div>{Math.round(topList.points)}</div>
           </li>
         ))}
