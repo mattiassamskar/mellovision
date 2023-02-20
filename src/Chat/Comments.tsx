@@ -36,7 +36,7 @@ export const Comments: React.FC<{
                 style={{ marginTop: 6, marginBottom: 6, borderRadius: 5 }}
               />
             )}
-            <div className={styles.chatComment}>{comment.comment}</div>
+            <div>{comment.comment}</div>
           </div>
         );
       })}

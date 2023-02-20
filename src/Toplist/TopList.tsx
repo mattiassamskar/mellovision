@@ -27,17 +27,15 @@ export const TopList = ({
 
   return (
     <div className={`row ${styles.container}`}>
-      <div>
-        <h4>TOPPLISTAN</h4>
-      </div>
-      <ul className="twelve columns">
+      <h4>TOPPLISTAN</h4>
+      <div className="twelve columns">
         {calculateToplist().map((topList) => (
-          <li key={topList.artist} className={styles.item}>
+          <div key={topList.artist} className={styles.item}>
             <span className={styles.artist}>{topList.artist}</span>
             <div>{Math.round(topList.points)}</div>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

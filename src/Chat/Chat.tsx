@@ -38,7 +38,7 @@ export const Chat = (props: Props) => {
       <div className={styles.container}>
         <div className={styles.closeIconContainer} onClick={toggleIsVisible}>
           <div className={styles.closeIcon}>
-            <FontAwesomeIcon icon={faTimes} />
+            <FontAwesomeIcon icon={faTimes} className={styles.closeIcon} />
           </div>
         </div>
 

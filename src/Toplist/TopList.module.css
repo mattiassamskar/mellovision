@@ -1,13 +1,13 @@
 .container {
   background: #443a84;
-  padding: 2vh 2vh 0 2vh;
-  margin-bottom: 3vh;
+  padding: 20px;
+  margin: 30px 0 30px 0;
   border-radius: 4px;
 }
 .item {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.2rem;
+  margin-bottom: 2px;
 }
 .artist {
   color: #e97db1;

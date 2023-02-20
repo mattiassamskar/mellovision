@@ -1,20 +1,18 @@
 .container {
   background: #443a84;
-  padding: 2vh 2vh 0 2vh;
-  opacity: 0.95;
-  height: 70vh;
+  padding: 20px;
+  height: 700px;
   overflow-y: scroll;
-  margin-bottom: 3vh;
+  margin-top: 30px;
   border-radius: 4px;
 }
-.list {
-  margin-bottom: 1rem;
-  margin-right: 1rem;
-}
 .header {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 0.5rem;
+  margin: 10px 0 2px 0;
+  color: #e97db1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
 }
 .vote {
   display: flex;
@@ -30,13 +28,4 @@
   justify-content: space-between;
   align-items: flex-end;
   margin-left: 10px;
-}
-.artistHeader {
-  margin-bottom: 0.2rem;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #e97db1;
 }
