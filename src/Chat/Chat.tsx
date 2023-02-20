@@ -11,7 +11,7 @@ interface Props {
   user: string;
   comments: UserComment[];
   hasUnreadComments: boolean;
-  onClearUnreadComments: () => void;
+  clearUnreadFlag: () => void;
 }
 
 export const Chat = (props: Props) => {
@@ -29,7 +29,7 @@ export const Chat = (props: Props) => {
 
   const toggleIsVisible = () => {
     setIsVisible(!isVisible);
-    props.onClearUnreadComments();
+    props.clearUnreadFlag();
   };
 
   return isVisible ? (

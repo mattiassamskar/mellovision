@@ -2,12 +2,10 @@ import { createRef, useEffect } from "react";
 import { UserComment } from "../types";
 import styles from "./Chat.module.css";
 
-interface Props {
+export const Comments: React.FC<{
   comments: UserComment[];
   user: string;
-}
-
-export const Comments: React.FC<Props> = (props) => {
+}> = ({ comments, user }) => {
   const messagesEnd = createRef<HTMLDivElement>();
 
   useEffect(() => {
@@ -17,31 +15,31 @@ export const Comments: React.FC<Props> = (props) => {
         block: "nearest",
         inline: "start",
       });
-  }, [props.comments.length, messagesEnd]);
-
-  const renderComment = (userComment: UserComment) => {
-    const isMyComment = props.user === userComment.user;
-    const className = isMyComment ? "my-comment" : "comment";
-
-    return (
-      <div key={userComment.key} className={className}>
-        {!isMyComment && <div className={styles.user}>{userComment.user}</div>}
-        {userComment.imageUrl && (
-          <img
-            src={userComment.imageUrl}
-            alt=""
-            width={200}
-            style={{ marginTop: 6, marginBottom: 6, borderRadius: 5 }}
-          />
-        )}
-        <div className={styles.chatComment}>{userComment.comment}</div>
-      </div>
-    );
-  };
+  }, [comments.length, messagesEnd]);
 
   return (
-    <div className="comment-list">
-      {props.comments.map(renderComment)}
+    <div className={styles.comments}>
+      {comments.map((comment) => {
+        const isMyComment = user === comment.user;
+
+        return (
+          <div
+            key={comment.key}
+            className={isMyComment ? styles.myComment : styles.comment}
+          >
+            {!isMyComment && <div className={styles.user}>{comment.user}</div>}
+            {comment.imageUrl && (
+              <img
+                src={comment.imageUrl}
+                alt=""
+                width={200}
+                style={{ marginTop: 6, marginBottom: 6, borderRadius: 5 }}
+              />
+            )}
+            <div className={styles.chatComment}>{comment.comment}</div>
+          </div>
+        );
+      })}
       <div className="messages-end" ref={messagesEnd} />
     </div>
   );

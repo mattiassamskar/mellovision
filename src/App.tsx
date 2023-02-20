@@ -27,10 +27,7 @@ export const App = () => {
   const [hasUnreadComments, setHasUnreadComments] = useState(false);
 
   useEffect(() => {
-    const user = localStorage.getItem(key);
-    if (user !== null) {
-      setUser(user);
-    }
+    setUser(localStorage.getItem(key) || "");
     initFirebase(addVote, changeVote, addComment);
   }, []);
 
@@ -55,7 +52,7 @@ export const App = () => {
   };
 
   const addComment = (comment: UserComment) => {
-    setHasUnreadComments(false);
+    setHasUnreadComments(true);
     setComments((currComments) => [...currComments, comment]);
   };
 
@@ -83,7 +80,7 @@ export const App = () => {
             user={user}
             comments={comments}
             hasUnreadComments={hasUnreadComments}
-            onClearUnreadComments={() => setHasUnreadComments(false)}
+            clearUnreadFlag={() => setHasUnreadComments(false)}
           />
         </>
       )}
