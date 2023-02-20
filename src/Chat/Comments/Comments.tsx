@@ -2,10 +2,13 @@ import { createRef, useEffect } from "react";
 import { UserComment } from "../../types";
 import styles from "./Comments.module.css";
 
-export const Comments: React.FC<{
+export const Comments = ({
+  comments,
+  user,
+}: {
   comments: UserComment[];
   user: string;
-}> = ({ comments, user }) => {
+}) => {
   const bottom = createRef<HTMLDivElement>();
 
   useEffect(() => {

@@ -4,19 +4,20 @@ import { useRef } from "react";
 import Webcam from "react-webcam";
 import styles from "./Camera.module.css";
 
-interface Props {
+export const Camera = ({
+  onTakePicture,
+  onClose,
+}: {
   onTakePicture: (imageSrc: string) => void;
   onClose: () => void;
-}
-
-export const Camera: React.FC<Props> = (props) => {
+}) => {
   const ref = useRef<Webcam>(null);
 
   const takePicture = () => {
     const imageSrc = ref.current?.getScreenshot();
     if (!imageSrc) return;
 
-    props.onTakePicture(imageSrc);
+    onTakePicture(imageSrc);
   };
 
   return (
@@ -44,7 +45,7 @@ export const Camera: React.FC<Props> = (props) => {
         icon={faTimes}
         color="white"
         className={styles.close}
-        onClick={props.onClose}
+        onClick={onClose}
       />
     </div>
   );

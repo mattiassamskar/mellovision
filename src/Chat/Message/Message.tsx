@@ -4,23 +4,24 @@ import { useState } from "react";
 import { Camera } from "../Camera/Camera";
 import styles from "./Message.module.css";
 
-interface Props {
+export const Message = ({
+  onAddComment,
+}: {
   onAddComment: (comment: string, imageUrl: string) => void;
-}
-
-export const Message: React.FC<Props> = ({ onAddComment }) => {
+}) => {
   const [comment, setComment] = useState("");
   const [showCamera, setShowCamera] = useState(false);
 
   const addComment = () => {
     if (!comment) return;
+
     onAddComment(comment, "");
     setComment("");
   };
 
   return (
     <>
-      {showCamera && (
+      {showCamera ? (
         <Camera
           onTakePicture={(image) => {
             onAddComment("", image);
@@ -28,14 +29,13 @@ export const Message: React.FC<Props> = ({ onAddComment }) => {
           }}
           onClose={() => setShowCamera(false)}
         />
-      )}
-      {!showCamera && (
+      ) : (
         <div className={styles.container}>
           <FontAwesomeIcon
             icon={faCamera}
             color="white"
             className={styles.icon}
-            onClick={() => setShowCamera(!showCamera)}
+            onClick={() => setShowCamera(true)}
           />
           <input
             type="text"

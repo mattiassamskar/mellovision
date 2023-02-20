@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { addVote, updateVote } from "../firebase";
 import { Vote } from "../types";
-import { VotePicker } from "./VotePicker";
+import { VotePicker } from "./VotePicker/VotePicker";
 import styles from "./Voting.module.css";
 
 interface Props {

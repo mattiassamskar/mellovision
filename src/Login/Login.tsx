@@ -1,45 +1,27 @@
-import React from "react";
-import "./Login.css";
+import { useState } from "react";
+import styles from "./Login.module.css";
 
-interface State {
-  user: string;
-}
+export const Login = ({ onUserSet }: { onUserSet: (user: string) => void }) => {
+  const [user, setUser] = useState("");
 
-interface Props {
-  onUserSet: (user: string) => void;
-}
-
-class Login extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      user: "",
-    };
-  }
-
-  render() {
-    return (
-      <div className="row login shake">
-        <div className="twelve columns">
-          <h3>Hej! Vad heter du?</h3>
-          <input
-            type="text"
-            className="u-full-width"
-            value={this.state.user}
-            onChange={(event) => this.setState({ user: event.target.value })}
-          />
-          <button
-            type="button"
-            className="button-primary"
-            onClick={() => this.props.onUserSet(this.state.user)}
-          >
-            OK
-          </button>
-        </div>
+  return (
+    <div className={`row ${styles.container}`}>
+      <div className="twelve columns">
+        <h3>Hej! Vad heter du?</h3>
+        <input
+          type="text"
+          className="u-full-width"
+          value={user}
+          onChange={(event) => setUser(event.target.value)}
+        />
+        <button
+          type="button"
+          className="button-primary"
+          onClick={() => onUserSet(user)}
+        >
+          OK
+        </button>
       </div>
-    );
-  }
-}
-
-export default Login;
+    </div>
+  );
+};

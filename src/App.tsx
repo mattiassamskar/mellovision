@@ -3,7 +3,7 @@ import "./App.css";
 import { Voting } from "./Voting/Voting";
 import { initFirebase } from "./firebase";
 import { Votes } from "./Votes/Votes";
-import Login from "./Login/Login";
+import { Login } from "./Login/Login";
 import { UserComment, Vote } from "./types";
 import { TopList } from "./Toplist/TopList";
 import { Chat } from "./Chat/Chat";
@@ -62,7 +62,7 @@ export const App = () => {
       <div className="container">
         <div className="row">
           <div className="twelve columns">
-            {user === "" ? (
+            {!user ? (
               <Login onUserSet={saveUser} />
             ) : (
               <>
