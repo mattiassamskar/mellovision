@@ -2,6 +2,7 @@ import { useState } from "react";
 import { addVote, updateVote } from "../firebase";
 import { Vote } from "../types";
 import VotePicker from "./VotePicker";
+import styles from "./Voting.module.css";
 
 interface Props {
   votes: Vote[];
@@ -10,20 +11,24 @@ interface Props {
 }
 
 export const Voting = (props: Props) => {
-  const [selectedArtist, setSelectedArtist] = useState("");
+  const [artist, setArtist] = useState("");
   const [musicVote, setMusicVote] = useState("");
   const [performanceVote, setPerformanceVote] = useState("");
   const [clothesVote, setClothesVote] = useState("");
 
-  const vote = () => {
+  const onClick = () => {
+    if (!artist || !musicVote || !performanceVote || !clothesVote) {
+      return;
+    }
+
     const vote = props.votes.find(
-      (vote) => vote.user === props.user && vote.artist === selectedArtist
+      (vote) => vote.user === props.user && vote.artist === artist
     );
 
     if (vote) {
       updateVote({
         ...vote,
-        artist: selectedArtist,
+        artist,
         music: +musicVote,
         performance: +performanceVote,
         clothes: +clothesVote,
@@ -31,74 +36,48 @@ export const Voting = (props: Props) => {
     } else {
       addVote({
         user: props.user,
-        artist: selectedArtist,
+        artist,
         music: +musicVote,
         performance: +performanceVote,
         clothes: +clothesVote,
       });
     }
-  };
-
-  const handleVoteButtonClick = () => {
-    if (!selectedArtist || !musicVote || !performanceVote || !clothesVote) {
-      return;
-    }
-
-    vote();
-
-    setSelectedArtist("");
+    setArtist("");
     setMusicVote("");
     setPerformanceVote("");
     setClothesVote("");
   };
 
   return (
-    <div className="row voting">
-      <div>
-        <h4>DIN RÖST</h4>
-      </div>
-
-      <div className="twelve columns">
-        <VotePicker
-          onChange={(selectedArtist) => setSelectedArtist(selectedArtist)}
-          value={selectedArtist}
-          values={props.artists}
-          placeHolder="Välj artist.."
-        />
-      </div>
-      <div className="twelve columns">
-        <VotePicker
-          onChange={(musicVote) => setMusicVote(musicVote)}
-          value={musicVote}
-          values={[1, 2, 3, 4, 5]}
-          placeHolder="Betygsätt musiken.."
-        />
-      </div>
-      <div className="twelve columns">
-        <VotePicker
-          onChange={(performanceVote) => setPerformanceVote(performanceVote)}
-          value={performanceVote}
-          values={[1, 2, 3, 4, 5]}
-          placeHolder="Betygsätt framträdandet.."
-        />
-      </div>
-      <div className="twelve columns">
-        <VotePicker
-          onChange={(clothesVote) => setClothesVote(clothesVote)}
-          value={clothesVote}
-          values={[1, 2, 3, 4, 5]}
-          placeHolder="Betygsätt kläderna.."
-        />
-      </div>
-      <div className="twelve columns">
-        <button
-          type="button"
-          className="button-primary"
-          onClick={handleVoteButtonClick}
-        >
-          Rösta!
-        </button>
-      </div>
+    <div className={`row ${styles.container}`}>
+      <h4>DIN RÖST</h4>
+      <VotePicker
+        onChange={(value) => setArtist(value)}
+        value={artist}
+        values={props.artists}
+        placeHolder="Välj artist.."
+      />
+      <VotePicker
+        onChange={(value) => setMusicVote(value)}
+        value={musicVote}
+        values={[1, 2, 3, 4, 5]}
+        placeHolder="Betygsätt musiken.."
+      />
+      <VotePicker
+        onChange={(value) => setPerformanceVote(value)}
+        value={performanceVote}
+        values={[1, 2, 3, 4, 5]}
+        placeHolder="Betygsätt framträdandet.."
+      />
+      <VotePicker
+        onChange={(value) => setClothesVote(value)}
+        value={clothesVote}
+        values={[1, 2, 3, 4, 5]}
+        placeHolder="Betygsätt kläderna.."
+      />
+      <button type="button" className="button-primary" onClick={onClick}>
+        Rösta!
+      </button>
     </div>
   );
 };

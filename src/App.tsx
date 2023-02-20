@@ -57,34 +57,30 @@ export const App = () => {
   };
 
   return (
-    <div className="container app">
-      <div
-        className="row"
-        style={{
-          marginTop: "1vh",
-          marginBottom: "1vh",
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <div className="title">mellovision</div>
+    <>
+      <div className="title">mellovision</div>
+      <div className="container">
+        <div className="row">
+          <div className="twelve columns">
+            {user === "" ? (
+              <Login onUserSet={saveUser} />
+            ) : (
+              <>
+                <Voting user={user} votes={votes} artists={artists} />
+                <Votes votes={votes} artists={artists} />
+                <TopList votes={votes} artists={artists} />
+                <Chat
+                  user={user}
+                  comments={comments}
+                  hasUnreadComments={hasUnreadComments}
+                  clearUnreadFlag={() => setHasUnreadComments(false)}
+                />
+              </>
+            )}
+          </div>
+        </div>
       </div>
-      {user === "" ? (
-        <Login onUserSet={saveUser} />
-      ) : (
-        <>
-          <Voting user={user} votes={votes} artists={artists} />
-          <Votes votes={votes} artists={artists} />
-          <TopList votes={votes} artists={artists} />
-          <Chat
-            user={user}
-            comments={comments}
-            hasUnreadComments={hasUnreadComments}
-            clearUnreadFlag={() => setHasUnreadComments(false)}
-          />
-        </>
-      )}
-    </div>
+    </>
   );
 };
 
