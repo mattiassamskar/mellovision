@@ -2,53 +2,50 @@ import { faDotCircle, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef } from "react";
 import Webcam from "react-webcam";
+import styles from "./Camera.module.css";
 
-interface Props {
+export const Camera = ({
+  onTakePicture,
+  onClose,
+}: {
   onTakePicture: (imageSrc: string) => void;
   onClose: () => void;
-}
-
-export const Camera: React.FC<Props> = (props) => {
-  const webcamRef = useRef<Webcam>(null);
+}) => {
+  const ref = useRef<Webcam>(null);
 
   const takePicture = () => {
-    const imageSrc = webcamRef.current?.getScreenshot();
+    const imageSrc = ref.current?.getScreenshot();
     if (!imageSrc) return;
 
-    props.onTakePicture(imageSrc);
+    onTakePicture(imageSrc);
   };
 
   return (
-    <div
-      style={{
-        height: 280,
-        width: 300,
-        margin: 10,
-      }}
-    >
+    <div className={styles.container}>
       <Webcam
         videoConstraints={{
-          width: 280,
-          height: 280,
+          width: 200,
+          height: 200,
           aspectRatio: { ideal: 1 },
         }}
         audio={false}
         mirrored={true}
-        ref={webcamRef}
+        ref={ref}
         screenshotFormat="image/jpeg"
+        className={styles.camera}
       />
       <FontAwesomeIcon
         icon={faDotCircle}
         size={"2x"}
         color="white"
+        className={styles.circle}
         onClick={takePicture}
-        style={{ position: "absolute", bottom: 20, right: "46%" }}
       />
       <FontAwesomeIcon
         icon={faTimes}
         color="white"
-        onClick={props.onClose}
-        style={{ position: "absolute", right: 20, bottom: 270 }}
+        className={styles.close}
+        onClick={onClose}
       />
     </div>
   );

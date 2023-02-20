@@ -1,0 +1,17 @@
+.container {
+  background: #443a84;
+  padding: 20px;
+  margin: 30px 0 30px 0;
+  border-radius: 4px;
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+.artist {
+  color: #e97db1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

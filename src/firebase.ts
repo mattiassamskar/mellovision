@@ -2,22 +2,22 @@ import firebase from "firebase/app";
 import "firebase/database";
 import "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
-import { Vote } from "./Voting";
-import { UserComment } from "./Chat/Chat";
+import { UserComment } from "./types";
+import { Vote } from "./types";
 
 const VOTES = "votes";
 const COMMENTS = "comments";
 
-firebase.initializeApp({
-  databaseURL: "https://eurovision-340ed.firebaseio.com",
-  storageBucket: "gs://eurovision-340ed.appspot.com",
-});
-
-export const initFirebaseVotes = (
+export const initFirebase = (
   onVoteAdded: (vote: Vote) => void,
   onVoteChanged: (vote: Vote) => void,
   onCommentAdded: (comment: UserComment) => void
 ) => {
+  firebase.initializeApp({
+    databaseURL: "https://eurovision-340ed.firebaseio.com",
+    storageBucket: "gs://eurovision-340ed.appspot.com",
+  });
+
   firebase
     .database()
     .ref(VOTES)
