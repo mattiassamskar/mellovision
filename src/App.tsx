@@ -9,16 +9,16 @@ import { TopList } from "./Toplist/TopList";
 import { Chat } from "./Chat/Chat";
 
 const artists = [
-  "Paul Rey - Royals",
-  "Casanovas - Så kommer känslorna tillbaka",
-  "Melanie Wehbe - For the show",
-  "Nordman - Släpp alla sorger",
-  "Laurell - Sober",
-  "Ida-Lova - Låt hela stan se på",
-  "Marcus & Martinus - Air",
+  "Kiana - Where Did You Go",
+  "Signe & Hjördis - Edelweiss",
+  "Smash Into Pieces - Six Feet Unde",
+  "Mariette - One Day",
+  "Emil Henrohn - Mera mera mera",
+  "Axel Schylström - Gorgeous",
+  "Loreen - Tattoo",
 ];
 
-const key = "20230218";
+const key = "20230225";
 
 export const App = () => {
   const [votes, setVotes] = useState<Vote[]>([]);
