@@ -1,24 +1,24 @@
 import { createRef, useEffect } from "react";
-import { UserComment } from "../types";
-import styles from "./Chat.module.css";
+import { UserComment } from "../../types";
+import styles from "./Comments.module.css";
 
 export const Comments: React.FC<{
   comments: UserComment[];
   user: string;
 }> = ({ comments, user }) => {
-  const messagesEnd = createRef<HTMLDivElement>();
+  const bottom = createRef<HTMLDivElement>();
 
   useEffect(() => {
-    messagesEnd.current &&
-      messagesEnd.current.scrollIntoView({
+    bottom.current &&
+      bottom.current.scrollIntoView({
         behavior: "auto",
         block: "nearest",
         inline: "start",
       });
-  }, [comments.length, messagesEnd]);
+  }, [comments.length, bottom]);
 
   return (
-    <div className={styles.comments}>
+    <div className={styles.container}>
       {comments.map((comment) => {
         const isMyComment = user === comment.user;
 
@@ -29,18 +29,13 @@ export const Comments: React.FC<{
           >
             {!isMyComment && <div className={styles.user}>{comment.user}</div>}
             {comment.imageUrl && (
-              <img
-                src={comment.imageUrl}
-                alt=""
-                width={200}
-                style={{ marginTop: 6, marginBottom: 6, borderRadius: 5 }}
-              />
+              <img src={comment.imageUrl} alt="" className={styles.image} />
             )}
             <div>{comment.comment}</div>
           </div>
         );
       })}
-      <div className="messages-end" ref={messagesEnd} />
+      <div className={styles.bottom} ref={bottom} />
     </div>
   );
 };

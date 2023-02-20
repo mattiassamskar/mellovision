@@ -1,7 +1,8 @@
 import { faArrowRight, faCamera } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { Camera } from "./Camera";
+import { Camera } from "../Camera/Camera";
+import styles from "./Message.module.css";
 
 interface Props {
   onAddComment: (comment: string, imageUrl: string) => void;
@@ -18,56 +19,38 @@ export const Message: React.FC<Props> = ({ onAddComment }) => {
   };
 
   return (
-    <div style={{ background: "#E97DB1", paddingTop: 5, paddingBottom: 5 }}>
+    <>
       {showCamera && (
-        <>
-          <Camera
-            onTakePicture={(image) => {
-              onAddComment("", image);
-              setShowCamera(false);
-            }}
-            onClose={() => setShowCamera(false)}
-          />
-        </>
+        <Camera
+          onTakePicture={(image) => {
+            onAddComment("", image);
+            setShowCamera(false);
+          }}
+          onClose={() => setShowCamera(false)}
+        />
       )}
       {!showCamera && (
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            margin: 5,
-            justifyContent: "space-between",
-          }}
-        >
+        <div className={styles.container}>
           <FontAwesomeIcon
             icon={faCamera}
             color="white"
-            style={{
-              margin: 5,
-              padding: 6,
-              borderRadius: 5,
-            }}
+            className={styles.icon}
             onClick={() => setShowCamera(!showCamera)}
           />
           <input
             type="text"
-            className="u-full-width chat-input"
+            className={`u-full-width ${styles.input}`}
             value={comment}
             onChange={(event) => setComment(event.target.value)}
-            style={{ marginBottom: 0 }}
           />
           <FontAwesomeIcon
             icon={faArrowRight}
             color="white"
-            style={{
-              margin: 5,
-              padding: 6,
-              borderRadius: 5,
-            }}
+            className={styles.icon}
             onClick={addComment}
           />
         </div>
       )}
-    </div>
+    </>
   );
 };

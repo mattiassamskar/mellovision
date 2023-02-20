@@ -1,0 +1,67 @@
+.container {
+  overflow-y: scroll;
+  height: 100%;
+}
+.user {
+  color: greenyellow;
+  margin-bottom: 2px;
+  font-size: 17px;
+  line-height: 17px;
+}
+.image {
+  align-self: center;
+  border-radius: 4px;
+  margin: 2px 0 0 0;
+}
+.comment {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #02b7dd;
+  margin: 0 72px 16px 16px;
+  padding: 12px 10px;
+  border-radius: 4px;
+}
+.comment:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 80%;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-right-color: #02b7dd;
+  border-left: 0;
+  border-bottom: 0;
+  margin-top: -10px;
+  margin-left: -10px;
+}
+.myComment {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #02b7dd;
+  margin: 0 16px 16px 72px;
+  padding: 10px;
+  border-radius: 4px;
+}
+.myComment:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 80%;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-left-color: #02b7dd;
+  border-right: 0;
+  border-bottom: 0;
+  margin-top: -10px;
+  margin-right: -10px;
+}
+.bottom {
+  float: left;
+  clear: both;
+}

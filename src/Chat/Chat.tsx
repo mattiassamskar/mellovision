@@ -3,8 +3,8 @@ import styles from "./Chat.module.css";
 import { addComment, uploadImage } from "../firebase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { Message } from "./Message";
-import { Comments } from "./Comments";
+import { Message } from "./Message/Message";
+import { Comments } from "./Comments/Comments";
 import { UserComment } from "../types";
 
 interface Props {
@@ -36,12 +36,9 @@ export const Chat = (props: Props) => {
     <div>
       <div className={styles.shadow} />
       <div className={styles.container}>
-        <div className={styles.closeIconContainer} onClick={toggleIsVisible}>
-          <div className={styles.closeIcon}>
-            <FontAwesomeIcon icon={faTimes} className={styles.closeIcon} />
-          </div>
+        <div className={styles.closeIcon} onClick={toggleIsVisible}>
+          <FontAwesomeIcon icon={faTimes} />
         </div>
-
         <Comments comments={props.comments} user={props.user} />
         <Message onAddComment={add} />
       </div>
