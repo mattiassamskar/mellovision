@@ -13,3 +13,5 @@ export interface UserComment {
   comment: string;
   imageUrl: string;
 }
+
+export type ConnectionState = "connected" | "disconnected";

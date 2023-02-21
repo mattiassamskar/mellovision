@@ -4,9 +4,11 @@ import { Voting } from "./Voting/Voting";
 import { initFirebase } from "./firebase";
 import { Votes } from "./Votes/Votes";
 import { Login } from "./Login/Login";
-import { UserComment, Vote } from "./types";
+import { ConnectionState, UserComment, Vote } from "./types";
 import { TopList } from "./Toplist/TopList";
 import { Chat } from "./Chat/Chat";
+import { Refresh } from "./Refresh/Refresh";
+import { useDebounce } from "./utils";
 
 const artists = [
   "Kiana - Where Did You Go",
@@ -25,10 +27,16 @@ export const App = () => {
   const [comments, setComments] = useState<UserComment[]>([]);
   const [user, setUser] = useState("");
   const [hasUnreadComments, setHasUnreadComments] = useState(false);
+  const [connectionState, setConnectionState] =
+    useState<ConnectionState>("connected");
+  const debouncedConnectionState = useDebounce<ConnectionState>(
+    connectionState,
+    2000
+  );
 
   useEffect(() => {
     setUser(localStorage.getItem(key) || "");
-    initFirebase(addVote, changeVote, addComment);
+    initFirebase(addVote, changeVote, addComment, setConnectionState);
   }, []);
 
   const saveUser = (user: string) => {
@@ -80,6 +88,7 @@ export const App = () => {
           </div>
         </div>
       </div>
+      {debouncedConnectionState === "disconnected" && <Refresh />}
     </>
   );
 };
