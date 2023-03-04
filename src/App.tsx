@@ -11,16 +11,17 @@ import { Refresh } from "./Refresh/Refresh";
 import { useDebounce } from "./utils";
 
 const artists = [
-  "Kiana - Where Did You Go",
-  "Signe & Hjördis - Edelweiss",
-  "Smash Into Pieces - Six Feet Unde",
-  "Mariette - One Day",
-  "Emil Henrohn - Mera mera mera",
-  "Axel Schylström - Gorgeous",
-  "Loreen - Tattoo",
+  "Theoz - Mer av dig",
+  "Mariette - One day",
+  "Victor Crone - ”Diamonds",
+  "Tennessee Tears - Now I know",
+  "Elov & Beny - Raggen går",
+  "Melanie Wehbe - For the show",
+  "Nordman - Släpp alla sorger",
+  "Kiana - Where did you go",
 ];
 
-const key = "20230225";
+const key = "20230304";
 
 export const App = () => {
   const [votes, setVotes] = useState<Vote[]>([]);
