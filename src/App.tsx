@@ -11,17 +11,21 @@ import { Refresh } from "./Refresh/Refresh";
 import { useDebounce } from "./utils";
 
 const artists = [
-  "Theoz - Mer av dig",
-  "Mariette - One day",
-  "Victor Crone - ”Diamonds",
-  "Tennessee Tears - Now I know",
-  "Elov & Beny - Raggen går",
-  "Melanie Wehbe - For the show",
-  "Nordman - Släpp alla sorger",
-  "Kiana - Where did you go",
+  "Where You Are (Sávežan) - Jon Henrik Fjällgren, Arc North feat. Adam Woods",
+  "Rhythm Of My Show - Tone Sekelius",
+  "One Day - Mariette",
+  "Air - Marcus & Martinus",
+  "On My Way - Panetoz",
+  "Never Give Up - Maria Sur",
+  "Six Feet Under - Smash Into Pieces",
+  "Where Did You Go - Kiana",
+  "Släpp alla sorger - Nordman",
+  "Tattoo - Loreen",
+  "Mer av dig - Theoz",
+  "Royals - Paul Rey",
 ];
 
-const key = "20230304";
+const key = "20230311";
 
 export const App = () => {
   const [votes, setVotes] = useState<Vote[]>([]);
