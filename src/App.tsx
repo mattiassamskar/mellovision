@@ -11,21 +11,15 @@ import { Refresh } from "./Refresh/Refresh";
 import { useDebounce } from "./utils";
 
 const artists = [
-  "Where You Are (Sávežan) - Jon Henrik Fjällgren, Arc North feat. Adam Woods",
-  "Rhythm Of My Show - Tone Sekelius",
-  "One Day - Mariette",
-  "Air - Marcus & Martinus",
-  "On My Way - Panetoz",
-  "Never Give Up - Maria Sur",
-  "Six Feet Under - Smash Into Pieces",
-  "Where Did You Go - Kiana",
-  "Släpp alla sorger - Nordman",
-  "Tattoo - Loreen",
-  "Mer av dig - Theoz",
-  "Royals - Paul Rey",
+  "Supernatural - Adam Woods",
+  "Hela världen väntar - Samir & Viktor",
+  "Min melodi - Melina Borglowe",
+  "Forever Yours - Elisa Lindström",
+  "Awful Liar - Lisa Ajax",
+  "Heroes Are Calling - Smash Into Pieces",
 ];
 
-const key = "20230311";
+const key = "20240203";
 
 export const App = () => {
   const [votes, setVotes] = useState<Vote[]>([]);
