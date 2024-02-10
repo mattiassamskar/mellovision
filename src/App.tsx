@@ -11,15 +11,15 @@ import { Refresh } from "./Refresh/Refresh";
 import { useDebounce } from "./utils";
 
 const artists = [
-  "Supernatural - Adam Woods",
-  "Hela världen väntar - Samir & Viktor",
-  "Min melodi - Melina Borglowe",
-  "Forever Yours - Elisa Lindström",
-  "Awful Liar - Lisa Ajax",
-  "Heroes Are Calling - Smash Into Pieces",
+  "When I'm Gone - Maria Sur",
+  "Norrland - Engmans Kapell",
+  "The Silence After You - Dear Sara",
+  "Ahumma - C-Joe",
+  "Dragon - LIAMOO",
+  "Unga & fria - Fröken Snusk",
 ];
 
-const key = "20240203";
+const key = "20240210";
 
 export const App = () => {
   const [votes, setVotes] = useState<Vote[]>([]);
