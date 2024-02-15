@@ -11,15 +11,15 @@ import { Refresh } from "./Refresh/Refresh";
 import { useDebounce } from "./utils";
 
 const artists = [
-  "When I'm Gone - Maria Sur",
-  "Norrland - Engmans Kapell",
-  "The Silence After You - Dear Sara",
-  "Ahumma - C-Joe",
-  "Dragon - LIAMOO",
-  "Unga & fria - Fröken Snusk",
+  "Effortless - Jacqline",
+  "Aldrig mer - Clara Klingenström",
+  "Take My Breath Away - Kim Cesarion",
+  "För dig - Klaudy",
+  "I Won't Shake (La La Gunilla) - Gunilla Persson",
+  "Give My Heart A Break - Cazzi Opeia",
 ];
 
-const key = "20240210";
+const key = "20240217";
 
 export const App = () => {
   const [votes, setVotes] = useState<Vote[]>([]);
