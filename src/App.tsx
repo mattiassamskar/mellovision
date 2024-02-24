@@ -11,15 +11,15 @@ import { Refresh } from "./Refresh/Refresh";
 import { useDebounce } from "./utils";
 
 const artists = [
-  "Effortless - Jacqline",
-  "Aldrig mer - Clara Klingenström",
-  "Take My Breath Away - Kim Cesarion",
-  "För dig - Klaudy",
-  "I Won't Shake (La La Gunilla) - Gunilla Persson",
-  "Give My Heart A Break - Cazzi Opeia",
+  "Done Getting Over You - Albin Tingwall",
+  "30 km/h - Lia Larsson",
+  "It´s Not Easy to Write a Love Song - Dotter",
+  "Circus X - SCARLET",
+  "En sång om sommaren - Lasse Stefanz",
+  "Happy That You Found Me - Danny Saucedo",
 ];
 
-const key = "20240217";
+const key = "20240224";
 
 export const App = () => {
   const [votes, setVotes] = useState<Vote[]>([]);
