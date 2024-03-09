@@ -9,6 +9,7 @@ import { TopList } from "./Toplist/TopList";
 import { Chat } from "./Chat/Chat";
 import { Refresh } from "./Refresh/Refresh";
 import { useDebounce } from "./utils";
+import { MoodList } from "./MoodList/MoodList";
 
 const artists = [
   "When I'm Gone - Maria Sur",
@@ -82,6 +83,7 @@ export const App = () => {
                 <Voting user={user} votes={votes} artists={artists} />
                 <Votes votes={votes} artists={artists} />
                 <TopList votes={votes} artists={artists} />
+                <MoodList votes={votes} />
                 <Chat
                   user={user}
                   comments={comments}

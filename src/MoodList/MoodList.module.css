@@ -1,0 +1,13 @@
+.container {
+  background: #443a84;
+  padding: 20px;
+  margin: 30px 0 30px 0;
+  border-radius: 4px;
+}
+.index {
+  display: inline-block;
+  width: 15px;
+}
+.user {
+  color: #e97db1;
+}
