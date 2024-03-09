@@ -1,6 +1,8 @@
 .container {
   overflow-y: scroll;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .user {
   color: greenyellow;
@@ -43,6 +45,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  align-self: flex-end;
   width: fit-content;
   background-color: #02b7dd;
   margin: 0 16px 16px 72px;
