@@ -11,15 +11,21 @@ import { Refresh } from "./Refresh/Refresh";
 import { useDebounce } from "./utils";
 
 const artists = [
-  "Done Getting Over You - Albin Tingwall",
-  "30 km/h - Lia Larsson",
-  "It´s Not Easy to Write a Love Song - Dotter",
-  "Circus X - SCARLET",
-  "En sång om sommaren - Lasse Stefanz",
+  "When I'm Gone - Maria Sur",
+  "Back To My Roots- Jay Smith",
+  "Awful Liar - Lisa Ajax",
+  "Heroes Are Calling - Smash Into Pieces",
+  "Give My Heart A Break - Cazzi Opeia",
+  "Light - Annika Wickihalder",
+  "Unforgettable - Marcus & Martinus",
+  "It's Not Easy to Write a Love Song - Dotter",
+  "Que Sera - Medina ",
+  "Dragon - Liamoo ",
+  "Effortless - Jacqline",
   "Happy That You Found Me - Danny Saucedo",
 ];
 
-const key = "20240224";
+const key = "20240309";
 
 export const App = () => {
   const [votes, setVotes] = useState<Vote[]>([]);
