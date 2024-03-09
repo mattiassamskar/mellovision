@@ -18,6 +18,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: fit-content;
   background-color: #02b7dd;
   margin: 0 72px 16px 16px;
   padding: 12px 10px;
@@ -42,6 +43,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: fit-content;
   background-color: #02b7dd;
   margin: 0 16px 16px 72px;
   padding: 10px;
