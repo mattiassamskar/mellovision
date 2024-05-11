@@ -12,21 +12,34 @@ import { useDebounce } from "./utils";
 import { MoodList } from "./MoodList/MoodList";
 
 const artists = [
-  "When I'm Gone - Maria Sur",
-  "Back To My Roots- Jay Smith",
-  "Awful Liar - Lisa Ajax",
-  "Heroes Are Calling - Smash Into Pieces",
-  "Give My Heart A Break - Cazzi Opeia",
-  "Light - Annika Wickihalder",
-  "Unforgettable - Marcus & Martinus",
-  "It's Not Easy to Write a Love Song - Dotter",
-  "Que Sera - Medina ",
-  "Dragon - Liamoo ",
-  "Effortless - Jacqline",
-  "Happy That You Found Me - Danny Saucedo",
+  "Sweden - Marcus & Martinus - Unforgettable",
+  "Ukraine - alyona alyona & Jerry Heil - Teresa & Maria",
+  "Germany - ISAAK - Always On The Run",
+  "Luxembourg - TALI - Fighter",
+  "Israel - Eden Golan - Hurricane",
+  "Lithuania - Silvester Belt - Luktelk",
+  "Spain - Nebulossa - ZORRA",
+  "Estonia - 5MIINUST x Puuluup - (nendest) narkootikumidest ei tea me (küll) midagi",
+  "Ireland - Bambie Thug - Doomsday Blue",
+  "Latvia - Dons - Hollow",
+  "Greece - Marina Satti - ZARI",
+  "United Kingdom - Olly Alexander - Dizzy",
+  "Norway - Gåte - Ulveham",
+  "Italy - Angelina Mango - La Noia",
+  "Serbia - TEYA DORA - RAMONDA",
+  "Finland - Windows95man - No Rules! ",
+  "Portugal - iolanda - Grito",
+  "Armenia - LADANIVA - Jako",
+  "Cyprus - Silia Kapsis - Liar",
+  "Switzerland - Nemo - The Code",
+  "Slovenia - Raiven - Veronika",
+  "Croatia - Baby Lasagna - Rim Tim Tagi Dim",
+  "Georgia - Nutsa Buzaladze - Firefighter",
+  "France - Slimane - Mon Amour",
+  "Austria - Kaleen - We Will Rave",
 ];
 
-const key = "20240309";
+const key = "20240511";
 
 export const App = () => {
   const [votes, setVotes] = useState<Vote[]>([]);
