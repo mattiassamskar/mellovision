@@ -12,34 +12,15 @@ import { useDebounce } from "./utils";
 import { MoodList } from "./MoodList/MoodList";
 
 const artists = [
-  "Sweden - Marcus & Martinus - Unforgettable",
-  "Ukraine - alyona alyona & Jerry Heil - Teresa & Maria",
-  "Germany - ISAAK - Always On The Run",
-  "Luxembourg - TALI - Fighter",
-  "Israel - Eden Golan - Hurricane",
-  "Lithuania - Silvester Belt - Luktelk",
-  "Spain - Nebulossa - ZORRA",
-  "Estonia - 5MIINUST x Puuluup - (nendest) narkootikumidest ei tea me (küll) midagi",
-  "Ireland - Bambie Thug - Doomsday Blue",
-  "Latvia - Dons - Hollow",
-  "Greece - Marina Satti - ZARI",
-  "United Kingdom - Olly Alexander - Dizzy",
-  "Norway - Gåte - Ulveham",
-  "Italy - Angelina Mango - La Noia",
-  "Serbia - TEYA DORA - RAMONDA",
-  "Finland - Windows95man - No Rules! ",
-  "Portugal - iolanda - Grito",
-  "Armenia - LADANIVA - Jako",
-  "Cyprus - Silia Kapsis - Liar",
-  "Switzerland - Nemo - The Code",
-  "Slovenia - Raiven - Veronika",
-  "Croatia - Baby Lasagna - Rim Tim Tagi Dim",
-  "Georgia - Nutsa Buzaladze - Firefighter",
-  "France - Slimane - Mon Amour",
-  "Austria - Kaleen - We Will Rave",
+  "Greczula - Believe Me",
+  "Malou Prytz - 24K Gold",
+  "Björn Holmgren - Rädda mig",
+  "Dolly Style - YIHAA",
+  "Angelino - Teardrops",
+  "Annika Wickihalder - Life Again",
 ];
 
-const key = "20240511";
+const key = "20250215";
 
 export const App = () => {
   const [votes, setVotes] = useState<Vote[]>([]);
