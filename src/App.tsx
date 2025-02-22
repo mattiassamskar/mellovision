@@ -12,12 +12,12 @@ import { useDebounce } from "./utils";
 import { MoodList } from "./MoodList/MoodList";
 
 const artists = [
-  "Greczula - Believe Me",
-  "Malou Prytz - 24K Gold",
-  "Björn Holmgren - Rädda mig",
-  "Dolly Style - YIHAA",
-  "Angelino - Teardrops",
-  "Annika Wickihalder - Life Again",
+  "Andreas Lundstedt - Vicious",
+  "Ella Tiritiello - Bara du är där",
+  "Tennessee Tears - Yours",
+  "KAJ - Bara bada bastu",
+  "Amena - Do Good Be Better",
+  "Måns Zelmerlöw - Revolution",
 ];
 
 const key = "20250215";
