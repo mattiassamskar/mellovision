@@ -12,15 +12,21 @@ import { useDebounce } from "./utils";
 import { MoodList } from "./MoodList/MoodList";
 
 const artists = [
-  "Andreas Lundstedt - Vicious",
-  "Ella Tiritiello - Bara du är där",
-  "Tennessee Tears - Yours",
-  "KAJ - Bara bada bastu",
-  "Amena - Do Good Be Better",
+  "John Lundvik - Voice of the Silent",
+  "Dolly Style - YIHAA",
+  "Greczula -Believe Me",
+  "Klara Hammarström - On and On and On",
+  "SCARLET - Sweet n' Psycho",
+  "Erik Segerstedt - Show Me What Love Is",
+  "Maja Ivarsson - Kamikaze Life",
+  "Meira Omar - Hush Hush",
   "Måns Zelmerlöw - Revolution",
+  "Saga Ludvigsson - Hate You So Much",
+  "Annika Wickihalder - Life Again",
+  "KAJ - Bara bada bastu",
 ];
 
-const key = "20250215";
+const key = "20250308";
 
 export const App = () => {
   const [votes, setVotes] = useState<Vote[]>([]);
