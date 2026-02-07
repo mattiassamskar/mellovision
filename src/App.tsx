@@ -12,21 +12,15 @@ import { useDebounce } from "./utils";
 import { MoodList } from "./MoodList/MoodList";
 
 const artists = [
-  "John Lundvik - Voice of the Silent",
-  "Dolly Style - YIHAA",
-  "Greczula -Believe Me",
-  "Klara Hammarström - On and On and On",
-  "SCARLET - Sweet n' Psycho",
-  "Erik Segerstedt - Show Me What Love Is",
-  "Maja Ivarsson - Kamikaze Life",
-  "Meira Omar - Hush Hush",
-  "Måns Zelmerlöw - Revolution",
-  "Saga Ludvigsson - Hate You So Much",
-  "Annika Wickihalder - Life Again",
-  "KAJ - Bara bada bastu",
+  "Arwin - Glitter",
+  "Laila Adèle - Oxygen",
+  "Robin Bengtsson - Honey honey",
+  "FELICIA - My system",
+  "Klara Almström - Där hela världen väntar",
+  "Brandsta City Släckers - Rakt in i elden",
 ];
 
-const key = "20250308";
+const key = "20260207";
 
 export const App = () => {
   const [votes, setVotes] = useState<Vote[]>([]);
@@ -37,7 +31,7 @@ export const App = () => {
     useState<ConnectionState>("connected");
   const debouncedConnectionState = useDebounce<ConnectionState>(
     connectionState,
-    2000
+    2000,
   );
 
   useEffect(() => {
@@ -57,7 +51,7 @@ export const App = () => {
   const changeVote = (changedVote: Vote) => {
     setVotes((currVotes) => {
       const index: number = currVotes.findIndex(
-        (vote) => vote.key === changedVote.key
+        (vote) => vote.key === changedVote.key,
       );
       const left = currVotes.slice(0, index);
       const right = currVotes.slice(index + 1);
