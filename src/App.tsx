@@ -12,12 +12,12 @@ import { useDebounce } from "./utils";
 import { MoodList } from "./MoodList/MoodList";
 
 const artists = [
-  "Arwin - Glitter",
-  "Laila Adèle - Oxygen",
-  "Robin Bengtsson - Honey honey",
-  "FELICIA - My system",
-  "Klara Almström - Där hela världen väntar",
-  "Brandsta City Släckers - Rakt in i elden",
+  "Patrik Jean - Dusk till dawn",
+  "Korslagda - King of rock 'n' roll",
+  "Emilia Pantić - Ingenting",
+  "Medina - Viva L'Amor",
+  "Eva Jumatate - Selfish",
+  "Saga Ludvigsson - Ain't today",
 ];
 
 const key = "20260207";
