@@ -12,15 +12,15 @@ import { useDebounce } from "./utils";
 import { MoodList } from "./MoodList/MoodList";
 
 const artists = [
-  "Patrik Jean - Dusk till dawn",
-  "Korslagda - King of rock 'n' roll",
-  "Emilia Pantić - Ingenting",
-  "Medina - Viva L'Amor",
-  "Eva Jumatate - Selfish",
-  "Saga Ludvigsson - Ain't today",
+  "Cimberly - Eternity",
+  "Timo Räisänen - Ingenting är efter oss",
+  "Meira Omar - Dooset Daram",
+  "Felix Manu - Hatar att jag älskar dig",
+  "Erika Jonsson - Från landet",
+  "Smash into pieces - Hollow",
 ];
 
-const key = "20260207";
+const key = "20260221";
 
 export const App = () => {
   const [votes, setVotes] = useState<Vote[]>([]);
