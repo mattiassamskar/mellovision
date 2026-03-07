@@ -12,15 +12,21 @@ import { useDebounce } from "./utils";
 import { MoodList } from "./MoodList/MoodList";
 
 const artists = [
-  "Cimberly - Eternity",
-  "Timo Räisänen - Ingenting är efter oss",
+  "A*Teens - Iconic",
   "Meira Omar - Dooset Daram",
-  "Felix Manu - Hatar att jag älskar dig",
-  "Erika Jonsson - Från landet",
-  "Smash into pieces - Hollow",
+  "Lilla Al-Fdji - Delulu",
+  "Saga Ludvigsson - Ain't Today",
+  "Smash Into Pieces - Hollow",
+  "Cimberly - Eternity",
+  "Medina - Viva L'Amor",
+  "Greczula - Half of Me",
+  "Robin Bengtsson - Honey Honey",
+  "FELICIA - My System",
+  "Sanna Nielsen - Waste Your Love",
+  "Brandsta City Släckers - Rakt in i elden",
 ];
 
-const key = "20260221";
+const key = "20260307";
 
 export const App = () => {
   const [votes, setVotes] = useState<Vote[]>([]);
